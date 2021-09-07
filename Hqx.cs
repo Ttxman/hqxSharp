@@ -22,47 +22,42 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using System.Drawing.Imaging;
 
 namespace hqx
 {
-    /// <summary>
-    /// Provides access to hqxSharp, the extended port of the hqx pixel art magnification filter.
-    /// </summary>
-    /// <remarks>
-    /// The main focus of hqxSharp lies on asset creation and use in tools; it is not necessarily intended as final output for real-time graphics.
-    /// <para>This means that additional functionality (like alpha support and variable AYUV thresholds) and easier code are usually preferred over a small performance increase.</para>
-    /// <para>Calls to hqx methods are compatible with the corresponding hqxSharp methods and the default thresholds are those used in hqx.</para>
-    /// </remarks>
-    public static partial class HqxSharp
-    {
-        const int Ymask = 0x00ff0000;
-        const int Umask = 0x0000ff00;
-        const int Vmask = 0x000000ff;
+	/// <summary>
+	/// Provides access to hqxSharp, the extended port of the hqx pixel art magnification filter.
+	/// </summary>
+	/// <remarks>
+	/// The main focus of hqxSharp lies on asset creation and use in tools; it is not necessarily intended as final output for real-time graphics.
+	/// <para>This means that additional functionality (like alpha support and variable AYUV thresholds) and easier code are usually preferred over a small performance increase.</para>
+	/// <para>Calls to hqx methods are compatible with the corresponding hqxSharp methods and the default thresholds are those used in hqx.</para>
+	/// </remarks>
+	public static partial class HqxSharp
+	{
+		private const int Ymask = 0x00ff0000;
+		private const int Umask = 0x0000ff00;
+		private const int Vmask = 0x000000ff;
 
-        /// <summary>
-        /// Compares two ARGB colors according to the provided Y, U, V and A thresholds.
-        /// </summary>
-        /// <param name="c1">An ARGB color.</param>
-        /// <param name="c2">A second ARGB color.</param>
-        /// <param name="trY">The Y (luminance) threshold.</param>
-        /// <param name="trU">The U (chrominance) threshold.</param>
-        /// <param name="trV">The V (chrominance) threshold.</param>
-        /// <param name="trA">The A (transparency) threshold.</param>
-        /// <returns>Returns true if colors differ more than the thresholds permit, otherwise false.</returns>
-        private static bool Diff(uint c1, uint c2, uint trY, uint trU, uint trV, uint trA)
-        {
-            int YUV1 = (int)RgbYuv.GetYuv(c1);
-            int YUV2 = (int)RgbYuv.GetYuv(c2);
+		/// <summary>
+		/// Compares two ARGB colors according to the provided Y, U, V and A thresholds.
+		/// </summary>
+		/// <param name="c1">An ARGB color.</param>
+		/// <param name="c2">A second ARGB color.</param>
+		/// <param name="trY">The Y (luminance) threshold.</param>
+		/// <param name="trU">The U (chrominance) threshold.</param>
+		/// <param name="trV">The V (chrominance) threshold.</param>
+		/// <param name="trA">The A (transparency) threshold.</param>
+		/// <returns>Returns true if colors differ more than the thresholds permit, otherwise false.</returns>
+		private static bool Diff(uint c1, uint c2, uint trY, uint trU, uint trV, uint trA)
+		{
+			int YUV1 = RgbYuv.GetYuv(c1);
+			int YUV2 = RgbYuv.GetYuv(c2);
 
-            return ((Math.Abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY) ||
-            (Math.Abs((YUV1 & Umask) - (YUV2 & Umask)) > trU) ||
-            (Math.Abs((YUV1 & Vmask) - (YUV2 & Vmask)) > trV) ||
-            (Math.Abs(((int)((uint)c1 >> 24) - (int)((uint)c2 >> 24))) > trA));
-        }
-    }
+			return ((Math.Abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY) ||
+			(Math.Abs((YUV1 & Umask) - (YUV2 & Umask)) > trU) ||
+			(Math.Abs((YUV1 & Vmask) - (YUV2 & Vmask)) > trV) ||
+			(Math.Abs(((int)(c1 >> 24) - (int)(c2 >> 24))) > trA));
+		}
+	}
 }
