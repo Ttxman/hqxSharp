@@ -7,3 +7,5 @@ Cameron Zemek - Package maintainer. Added 24bit color support.
 Authors of hqxSharp:
 
 Tamme Schichler - Project maintainer. Ported hqx to C#. Added 32bit color support. Added customizable thresholds for edge-detection. Added seamless modes for use with tilesets.
+
+René Rhéaume - Forked the project for performance improvements under RyuJIT and reduce IL code size
