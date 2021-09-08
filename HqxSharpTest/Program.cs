@@ -19,6 +19,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using hqx;
@@ -29,12 +30,14 @@ namespace HqxSharpTest
 	{
 		private static void Main(string[] args)
 		{
-			Console.WriteLine("Pointer size is {0}", IntPtr.Size);
-			var strImageDirectory = (args.Length > 0) ? args[0] : Environment.CurrentDirectory;
-			Console.WriteLine("Will process directory {0} not recursively", strImageDirectory);
-			var strarImages = Directory.GetFiles(strImageDirectory, "*.*g*", SearchOption.TopDirectoryOnly);
-			Array.Sort(strarImages);
-			Console.WriteLine("Found {0} images in that directory", strarImages.Length);
+			Console.WriteLine("Pointer size is {0} bytes", IntPtr.Size);
+			var strImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
+			Console.WriteLine("Processing directory {0} NOT recursively", strImageDirectory);
+			var lstImages = new List<string>(Directory.GetFiles(strImageDirectory, "*.*g*", SearchOption.TopDirectoryOnly));
+			lstImages.RemoveAll(x => Path.GetExtension(x) == ".config");
+			lstImages.Sort();
+			var c = lstImages.Count;
+			Console.WriteLine("Found {0} images in that directory", c);
 
 			var dtmGlobalStart = DateTime.UtcNow;
 			var tsGlobalLoad = TimeSpan.Zero;
@@ -44,8 +47,8 @@ namespace HqxSharpTest
 			long lngGlobalPixels = 0;
 			var i = 0;
 			try {
-				for (i = 0; i < strarImages.Length; i++) {
-					var strImage = strarImages[i];
+				for (i = 0; i < c; i++) {
+					var strImage = lstImages[i];
 					lngGlobalSize += new FileInfo(strImage).Length;
 					var dtmImageStart = DateTime.UtcNow;
 					Bitmap bmpSource = null, bmpScaled = null;
@@ -67,12 +70,12 @@ namespace HqxSharpTest
 						}
 					}
 
-					if (((DateTime.UtcNow - dtmLastSecond).TotalSeconds >= 1) || (i >= strarImages.Length - 1)) {
-						dtmLastSecond = DisplayTimings(i + 1, strarImages.Length, dtmGlobalStart, tsGlobalLoad, tsGlobalScale, lngGlobalSize, lngGlobalPixels);
+					if (((DateTime.UtcNow - dtmLastSecond).TotalSeconds >= 1) || (i >= c - 1)) {
+						dtmLastSecond = DisplayTimings(i + 1, c, dtmGlobalStart, tsGlobalLoad, tsGlobalScale, lngGlobalSize, lngGlobalPixels);
 					}
 				}
 			} catch (Exception ex) {
-				dtmLastSecond = DisplayTimings(i, strarImages.Length, dtmGlobalStart, tsGlobalLoad, tsGlobalScale, lngGlobalSize, lngGlobalPixels);
+				dtmLastSecond = DisplayTimings(i, c, dtmGlobalStart, tsGlobalLoad, tsGlobalScale, lngGlobalSize, lngGlobalPixels);
 				Console.Error.WriteLine(ex is ApplicationException ? ex.Message : ex.ToString());
 			} finally {
 				Console.WriteLine("Press Enter to exit...");
@@ -83,9 +86,9 @@ namespace HqxSharpTest
 		private static DateTime DisplayTimings(int done, int count, DateTime dtmGlobalStart, TimeSpan tsGlobalLoad, TimeSpan tsGlobalScale, long lngGlobalSize, long lngGlobalPixels)
 		{
 			var dtmLastSecond = DateTime.UtcNow;
-			var lngSinceStart = (DateTime.UtcNow - dtmGlobalStart).Ticks;
+			var lngSinceStart = (dtmLastSecond - dtmGlobalStart).Ticks;
 			var f64ScaleSeconds = tsGlobalScale.TotalSeconds;
-			Console.WriteLine("{0,5}/{1,5} {2,3}% done  Avg {3:##0.0}% load {4:##0.0}% hq3x {5:n1}kiB/s {6:n1}FPS {7:n3}Mpx/s",
+			Console.WriteLine("{0,5}/{1,5} {2,3}% done    Avg {3:##0.0}% load {4:##0.0}% hq3x {5:n1}kiB/s {6:n1}FPS {7:n3}Mpx/s",
 			 done, count, (100 * done) / count,
 			 100.0 * tsGlobalLoad.Ticks / lngSinceStart,
 			 100.0 * tsGlobalScale.Ticks / lngSinceStart,
