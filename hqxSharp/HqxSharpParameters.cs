@@ -26,6 +26,8 @@ namespace hqx
 	[StructLayout(LayoutKind.Auto)]
 	public struct HqxSharpParameters : IEquatable<HqxSharpParameters>
 	{
+		public static readonly unsafe int Size = sizeof(HqxSharpParameters);
+
 		public static readonly HqxSharpParameters Default = Create();
 
 		/// <summary>The Y (luminance) threshold.</summary>

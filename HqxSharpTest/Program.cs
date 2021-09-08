@@ -30,9 +30,9 @@ namespace HqxSharpTest
 	{
 		private static void Main(string[] args)
 		{
-			Console.WriteLine("Pointer size is {0} bytes", IntPtr.Size);
+			Console.WriteLine("Pointer size is {0} bytes, HqxSharpParameters {1} bytes", IntPtr.Size, HqxSharpParameters.Size);
 			var strImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
-			Console.WriteLine("Processing directory {0} NOT recursively", strImageDirectory);
+			Console.WriteLine("Processing not recursively " + strImageDirectory);
 			var lstImages = FindImages(strImageDirectory);
 			var c = lstImages.Count;
 			Console.WriteLine("Found {0} images in that directory", c);
@@ -76,6 +76,9 @@ namespace HqxSharpTest
 				dtmLastSecond = DisplayTimings(i, c, dtmGlobalStart, tsGlobalLoad, tsGlobalScale, lngGlobalSize, lngGlobalPixels);
 				Console.Error.WriteLine(ex is ApplicationException ? ex.Message : ex.ToString());
 			} finally {
+				Console.WriteLine("Ended after {0:g} of processing", DateTime.UtcNow - dtmGlobalStart);
+				Console.WriteLine("GC memory: {0:n1}MiB before collection, {1:n1}MiB after",
+				 GC.GetTotalMemory(false) / (1024.0 * 1024.0), GC.GetTotalMemory(true) / (1024.0 * 1024.0));
 				Console.WriteLine("Press Enter to exit...");
 				Console.ReadLine();
 			}
@@ -97,9 +100,9 @@ namespace HqxSharpTest
 		private static DateTime DisplayTimings(int done, int count, DateTime dtmGlobalStart, TimeSpan tsGlobalLoad, TimeSpan tsGlobalScale, long lngGlobalSize, long lngGlobalPixels)
 		{
 			var dtmLastSecond = DateTime.UtcNow;
-			var lngSinceStart = (dtmLastSecond - dtmGlobalStart).Ticks;
 			var f64ScaleSeconds = tsGlobalScale.TotalSeconds;
-			Console.WriteLine("{0,5}/{1,5} {2,3}% done   Avg {3:##0.0}% load {4:##0.0}% hq3x {5:n1}kiB/s {6:n1}FPS {7:n3}Mpx/s",
+			var lngSinceStart = (dtmLastSecond - dtmGlobalStart).Ticks;
+			Console.WriteLine("{0,5}/{1,5} {2,3}% done   Avg {3,4:#0.0}% load {4,4:#0.0}% hq3x {5,5:n1}kiB/s {6,4:n1}FPS {7:n2}Mpx/s",
 			 done, count, (100 * done) / count,
 			 100.0 * tsGlobalLoad.Ticks / lngSinceStart,
 			 100.0 * tsGlobalScale.Ticks / lngSinceStart,
