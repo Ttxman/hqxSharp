@@ -42,33 +42,57 @@ namespace HqxSharpTest
 			var dtmLastSecond = DateTime.UtcNow;
 			long lngGlobalSize = 0;
 			long lngGlobalPixels = 0;
+			var i = 0;
+			try {
+				for (i = 0; i < strarImages.Length; i++) {
+					var strImage = strarImages[i];
+					lngGlobalSize += new FileInfo(strImage).Length;
+					var dtmImageStart = DateTime.UtcNow;
+					Bitmap bmpSource = null, bmpScaled = null;
+					try {
+						bmpSource = new Bitmap(strImage);
+						tsGlobalLoad += DateTime.UtcNow - dtmImageStart;
+						var dtmScaleStart = DateTime.UtcNow;
+						bmpScaled = HqxSharp.Scale(bmpSource, 3, HqxSharpParameters.Default);
+						tsGlobalScale += DateTime.UtcNow - dtmScaleStart;
+						lngGlobalPixels += bmpScaled.Width * bmpScaled.Height;
+					} catch (ArgumentException excArg) {
+						throw new ApplicationException(String.Format("Cannot load {0}, its {1} is not valid.", Path.GetFileName(strImage), excArg.ParamName), excArg);
+					} finally {
+						if (bmpSource != null) {
+							bmpSource.Dispose();
+						}
+						if (bmpScaled != null) {
+							bmpScaled.Dispose();
+						}
+					}
 
-			for (int i = 0; i < strarImages.Length; i++) {
-				var strImage = strarImages[i];
-				lngGlobalSize += new FileInfo(strImage).Length;
-				var dtmImageStart = DateTime.UtcNow;
-				using (var bmpSource = new Bitmap(strImage)) {
-					tsGlobalLoad += DateTime.UtcNow - dtmImageStart;
-					var dtmScaleStart = DateTime.UtcNow;
-					var bmpScaled = HqxSharp.Scale(bmpSource, 3, HqxSharpParameters.Default);
-					tsGlobalScale += DateTime.UtcNow - dtmScaleStart;
-					lngGlobalPixels += bmpScaled.Width * bmpScaled.Height;
+					if (((DateTime.UtcNow - dtmLastSecond).TotalSeconds >= 1) || (i >= strarImages.Length - 1)) {
+						dtmLastSecond = DisplayTimings(i + 1, strarImages.Length, dtmGlobalStart, tsGlobalLoad, tsGlobalScale, lngGlobalSize, lngGlobalPixels);
+					}
 				}
-				if (((DateTime.UtcNow - dtmLastSecond).TotalSeconds >= 1) || (i >= strarImages.Length - 1)) {
-					dtmLastSecond = DateTime.UtcNow;
-					var lngSinceStart = (DateTime.UtcNow - dtmGlobalStart).Ticks;
-					var f64ScaleSeconds = tsGlobalScale.TotalSeconds;
-					Console.WriteLine("{0,5}/{1,5} {2:##0}% done  Avg {3:##0.0}% load {4:##0.0}% scale {5:n1}kiB/s {6:n1}FPS {7:n3}Mpx/s",
-					 i + 1, strarImages.Length, (100 * (i + 1)) / strarImages.Length,
-					 100.0 * tsGlobalLoad.Ticks / lngSinceStart,
-					 100.0 * tsGlobalScale.Ticks / lngSinceStart,
-					 lngGlobalSize / (1024.0 * f64ScaleSeconds),
-					 (i + 1) / f64ScaleSeconds,
-					 lngGlobalPixels * 0.000001 / f64ScaleSeconds);
-				}
+			} catch (Exception ex) {
+				dtmLastSecond = DisplayTimings(i, strarImages.Length, dtmGlobalStart, tsGlobalLoad, tsGlobalScale, lngGlobalSize, lngGlobalPixels);
+				Console.Error.WriteLine(ex is ApplicationException ? ex.Message : ex.ToString());
+			} finally {
+				Console.WriteLine("Press Enter to exit...");
+				Console.ReadLine();
 			}
-			Console.WriteLine("Press Enter to exit...");
-			Console.ReadLine();
+		}
+
+		private static DateTime DisplayTimings(int done, int count, DateTime dtmGlobalStart, TimeSpan tsGlobalLoad, TimeSpan tsGlobalScale, long lngGlobalSize, long lngGlobalPixels)
+		{
+			var dtmLastSecond = DateTime.UtcNow;
+			var lngSinceStart = (DateTime.UtcNow - dtmGlobalStart).Ticks;
+			var f64ScaleSeconds = tsGlobalScale.TotalSeconds;
+			Console.WriteLine("{0,5}/{1,5} {2,3}% done  Avg {3:##0.0}% load {4:##0.0}% hq3x {5:n1}kiB/s {6:n1}FPS {7:n3}Mpx/s",
+			 done, count, (100 * done) / count,
+			 100.0 * tsGlobalLoad.Ticks / lngSinceStart,
+			 100.0 * tsGlobalScale.Ticks / lngSinceStart,
+			 lngGlobalSize / (1024.0 * f64ScaleSeconds),
+			 done / f64ScaleSeconds,
+			 lngGlobalPixels * 0.000001 / f64ScaleSeconds);
+			return dtmLastSecond;
 		}
 	}
 }

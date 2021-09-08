@@ -104,17 +104,27 @@ namespace hqx
 			if (bitmap == null) {
 				throw new ArgumentNullException("bitmap");
 			}
+			if (magnify == null) {
+				throw new ArgumentNullException("magnify");
+			}
 			var Xres = bitmap.Width;
 			var Yres = bitmap.Height;
-			var dest = new Bitmap(checked((short)(Xres * factor)), checked((short)(Yres * factor)));
-			var bmpData = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-			var destData = dest.LockBits(new Rectangle(Point.Empty, dest.Size), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-			var sp = (uint*)bmpData.Scan0.ToPointer();
-			var dp = (uint*)destData.Scan0.ToPointer();
-			magnify(sp, dp, Xres, Yres, trY, trU, trV, trA, wrapX, wrapY);
-			bitmap.UnlockBits(bmpData);
-			dest.UnlockBits(destData);
-			return dest;
+			BitmapData bmpData = null, destData = null;
+			Bitmap dest = null;
+			try {
+				dest = new Bitmap(checked((short)(Xres * factor)), checked((short)(Yres * factor)));
+				bmpData = bitmap.LockBits(new Rectangle(0, 0, Xres, Yres), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+				destData = dest.LockBits(new Rectangle(Point.Empty, dest.Size), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+				magnify((uint*)bmpData.Scan0.ToPointer(), (uint*)destData.Scan0.ToPointer(), Xres, Yres, trY, trU, trV, trA, wrapX, wrapY);
+				return dest;
+			} finally {
+				if (bmpData != null) {
+					bitmap.UnlockBits(bmpData);
+				}
+				if ((destData != null) && (dest != null)) {
+					dest.UnlockBits(destData);
+				}
+			}
 		}
 	}
 }
