@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hqx.cs" />
+    <Compile Include="HqxSharpParameters.cs" />
     <Compile Include="Hqx_2x.cs" />
     <Compile Include="Hqx_3x.cs" />
     <Compile Include="Hqx_4x.cs" />

@@ -5,6 +5,8 @@
  * 
  * Copyright © 2011, 2012 Tamme Schichler (tamme.schichler@googlemail.com)
  * 
+ * Copyright © 2020 René Rhéaume (rene.rheaume@gmail.com)
+ *
  * This file is part of hqxSharp.
  *
  * hqxSharp is free software: you can redistribute it and/or modify
@@ -33,51 +35,19 @@ namespace hqx
 		/// <para>The image is scaled to four times its size.</para>
 		/// </summary>
 		/// <param name="bitmap">The source image.</param>
-		/// <param name="trY">The Y (luminance) threshold.</param>
-		/// <param name="trU">The U (chrominance) threshold.</param>
-		/// <param name="trV">The V (chrominance) threshold.</param>
-		/// <param name="trA">The A (transparency) threshold.</param>
-		/// <param name="wrapX">Used for images that can be seamlessly repeated horizontally.</param>
-		/// <param name="wrapY">Used for images that can be seamlessly repeated vertically.</param>
-		/// <returns>A new Bitmap instance that contains the source imagage scaled to four times its size.</returns>
-		public static unsafe Bitmap Scale4(Bitmap bitmap, uint trY = 48, uint trU = 7, uint trV = 6, uint trA = 0, bool wrapX = false, bool wrapY = false)
+		/// <param name="parameters">Thresholds and wrapping options for scaling.</param>
+		/// <returns>A new Bitmap instance that contains the source image scaled to four times its size.</returns>
+		public static unsafe Bitmap Scale4(Bitmap bitmap, HqxSharpParameters parameters)
 		{
-
-			int Xres = bitmap.Width;
-			int Yres = bitmap.Height;
-
-			var dest = new Bitmap(bitmap.Width * 4, bitmap.Height * 4);
-
-			var bmpData = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-			var destData = dest.LockBits(new Rectangle(Point.Empty, dest.Size), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-			{
-
-				uint* sp = (uint*)bmpData.Scan0.ToPointer();
-				uint* dp = (uint*)destData.Scan0.ToPointer();
-
-				Scale4(sp, dp, Xres, Yres, trY, trU, trV, trA, wrapX, wrapY);
-			}
-			bitmap.UnlockBits(bmpData);
-			dest.UnlockBits(destData);
-
-			return dest;
+			return Scale(bitmap, 4, Scale4, parameters);
 		}
 
-		/// <summary>
-		/// This is the extended C# port of the hq4x algorithm.
-		/// <para>The destination image must be exactly four times as large in both dimensions as the source image.</para>
-		/// </summary>
-		/// <param name="sp">A pointer to the source image.</param>
-		/// <param name="dp">A pointer to the destination image.</param>
-		/// <param name="Xres">The horizontal resolution of the source image.</param>
-		/// <param name="Yres">The vertical resolution of the source image.</param>
-		/// <param name="trY">The Y (luminance) threshold.</param>
-		/// <param name="trU">The U (chrominance) threshold.</param>
-		/// <param name="trV">The V (chrominance) threshold.</param>
-		/// <param name="trA">The A (transparency) threshold.</param>
-		/// <param name="wrapX">Used for images that can be seamlessly repeated horizontally.</param>
-		/// <param name="wrapY">Used for images that can be seamlessly repeated vertically.</param>
-		public static unsafe void Scale4(uint* sp, uint* dp, int Xres, int Yres, uint trY = 48, uint trU = 7, uint trV = 6, uint trA = 0, bool wrapX = false, bool wrapY = false)
+		public static unsafe Bitmap Scale4(Bitmap bitmap)
+		{
+			return Scale(bitmap, 4, Scale4, HqxSharpParameters.Default);
+		}
+
+		private static unsafe void Scale4(uint* sp, uint* dp, int Xres, int Yres, uint trY, uint trU, uint trV, uint trA, bool wrapX, bool wrapY)
 		{
 			//Don't shift trA, as it uses shift right instead of a mask for comparisons.
 			trY <<= 2 * 8;
