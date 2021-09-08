@@ -18,12 +18,13 @@
  * along with hqxSharp. If not, see <http://www.gnu.org/licenses/>.
  */
 
+using System;
 using System.Runtime.InteropServices;
 
 namespace hqx
 {
 	[StructLayout(LayoutKind.Auto)]
-	public struct HqxSharpParameters
+	public struct HqxSharpParameters : IEquatable<HqxSharpParameters>
 	{
 		public static readonly HqxSharpParameters Default = Create();
 
@@ -55,6 +56,48 @@ namespace hqx
 			parameters.WrapX = wrapX;
 			parameters.WrapY = wrapY;
 			return parameters;
+		}
+
+		public override bool Equals(object obj)
+		{
+			return obj is HqxSharpParameters && this.Equals((HqxSharpParameters)obj);
+		}
+
+		public bool Equals(HqxSharpParameters other)
+		{
+			return (this.LumaThreshold == other.LumaThreshold) &&
+			 (this.BlueishThreshold == other.BlueishThreshold) &&
+			 (this.ReddishThreshold == other.ReddishThreshold) &&
+			 (this.AlphaThreshold == other.AlphaThreshold) &&
+			 (this.WrapX == other.WrapX) &&
+			 (this.WrapY == other.WrapY);
+		}
+
+		public override int GetHashCode()
+		{
+			return (int)((this.AlphaThreshold << 24) |
+			 (this.LumaThreshold << 16) |
+			 (this.ReddishThreshold << 8) |
+			 this.BlueishThreshold |
+			 (this.WrapX ? 1u : 0u) << 15 |
+			 (this.WrapY ? 1u : 0u) << 7);
+		}
+
+		public static bool operator ==(HqxSharpParameters left, HqxSharpParameters right)
+		{
+			return left.Equals(right);
+		}
+
+		public static bool operator !=(HqxSharpParameters left, HqxSharpParameters right)
+		{
+			return !(left == right);
+		}
+
+		public override string ToString()
+		{
+			return String.Format("Thresholds: {{ Y:{0}, U:{1}, V:{2}, A:{3} }}, Wrap: {{ X:{4}, Y:{5} }}",
+			 this.LumaThreshold, this.BlueishThreshold, this.ReddishThreshold, this.AlphaThreshold,
+			 this.WrapX, this.WrapY);
 		}
 	}
 }
