@@ -33,9 +33,7 @@ namespace HqxSharpTest
 			Console.WriteLine("Pointer size is {0} bytes", IntPtr.Size);
 			var strImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
 			Console.WriteLine("Processing directory {0} NOT recursively", strImageDirectory);
-			var lstImages = new List<string>(Directory.GetFiles(strImageDirectory, "*.*g*", SearchOption.TopDirectoryOnly));
-			lstImages.RemoveAll(x => Path.GetExtension(x) == ".config");
-			lstImages.Sort();
+			var lstImages = FindImages(strImageDirectory);
 			var c = lstImages.Count;
 			Console.WriteLine("Found {0} images in that directory", c);
 
@@ -83,12 +81,25 @@ namespace HqxSharpTest
 			}
 		}
 
+		private static bool RemoveConfigFiles(string path)
+		{
+			return Path.GetExtension(path) == ".config";
+		}
+
+		private static List<string> FindImages(string directory)
+		{
+			var lstImages = new List<string>(Directory.GetFiles(directory, "*.*g*", SearchOption.TopDirectoryOnly));
+			lstImages.RemoveAll(RemoveConfigFiles);
+			lstImages.Sort();
+			return lstImages;
+		}
+
 		private static DateTime DisplayTimings(int done, int count, DateTime dtmGlobalStart, TimeSpan tsGlobalLoad, TimeSpan tsGlobalScale, long lngGlobalSize, long lngGlobalPixels)
 		{
 			var dtmLastSecond = DateTime.UtcNow;
 			var lngSinceStart = (dtmLastSecond - dtmGlobalStart).Ticks;
 			var f64ScaleSeconds = tsGlobalScale.TotalSeconds;
-			Console.WriteLine("{0,5}/{1,5} {2,3}% done    Avg {3:##0.0}% load {4:##0.0}% hq3x {5:n1}kiB/s {6:n1}FPS {7:n3}Mpx/s",
+			Console.WriteLine("{0,5}/{1,5} {2,3}% done   Avg {3:##0.0}% load {4:##0.0}% hq3x {5:n1}kiB/s {6:n1}FPS {7:n3}Mpx/s",
 			 done, count, (100 * done) / count,
 			 100.0 * tsGlobalLoad.Ticks / lngSinceStart,
 			 100.0 * tsGlobalScale.Ticks / lngSinceStart,
