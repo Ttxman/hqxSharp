@@ -18,36 +18,25 @@
  * along with hqxSharp. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define Graphical
 using System;
-using System.IO;
-#if (Graphical)
 using System.Windows.Forms;
-#endif
 
 namespace HqxSharpTest
 {
-	internal static class Program
+	public partial class Form1 : Form
 	{
-		internal static string ImageDirectory { get; private set; }
-
-#if (Graphical)
-		[STAThread]
-#endif
-		private static void Main(string[] args)
+		public Form1()
 		{
-			var strImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
+			this.InitializeComponent();
+			this.Shown += this.Form1_Shown;
+		}
 
-#if (Graphical)
-			Program.ImageDirectory = strImageDirectory;
-
-			// Standard Windows Forms init. Test bench will be run in its Shown event
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
-			Application.DoEvents();
-#else
-			new TestBench(strImageDirectory, new ConsoleBenchDisplay()).Run();
-#endif
+		private void Form1_Shown(object sender, EventArgs e)
+		{
+			using (var display = new FormBenchDisplay(this)) {
+				var bench = new TestBench(Program.ImageDirectory, display);
+				bench.Run();
+			}
 		}
 	}
 }

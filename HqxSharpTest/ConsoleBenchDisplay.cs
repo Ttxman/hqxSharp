@@ -18,36 +18,38 @@
  * along with hqxSharp. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define Graphical
 using System;
-using System.IO;
-#if (Graphical)
-using System.Windows.Forms;
-#endif
+using System.Drawing;
 
 namespace HqxSharpTest
 {
-	internal static class Program
+	internal sealed class ConsoleBenchDisplay : TestBenchDisplay
 	{
-		internal static string ImageDirectory { get; private set; }
-
-#if (Graphical)
-		[STAThread]
-#endif
-		private static void Main(string[] args)
+		public override void Info(string message)
 		{
-			var strImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
+			Console.WriteLine(message);
+		}
 
-#if (Graphical)
-			Program.ImageDirectory = strImageDirectory;
+		public override void Error(string message)
+		{
+			Console.Error.WriteLine(message);
+		}
 
-			// Standard Windows Forms init. Test bench will be run in its Shown event
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
-			Application.DoEvents();
-#else
-			new TestBench(strImageDirectory, new ConsoleBenchDisplay()).Run();
-#endif
+		public override void Progress(string message)
+		{
+			Console.WriteLine(message);
+		}
+
+		public override void Draw(Bitmap scaled)
+		{
+			// Do nothing. You could also write the image on disk here.
+		}
+
+		public override void OnEnd(DateTime globalStart)
+		{
+			Console.WriteLine(base.FormatEndMessage(globalStart));
+			Console.WriteLine("Press Enter to exit...");
+			Console.ReadLine();
 		}
 	}
 }
