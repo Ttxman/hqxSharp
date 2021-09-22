@@ -32,6 +32,9 @@ namespace HqxSharpTest
 {
 	internal sealed class TestBench
 	{
+		private string m_strImageDir;
+		private TestBenchDisplay m_objDisplay;
+
 		public TestBench() { }
 
 		public TestBench(string imageDirectory, TestBenchDisplay display)
@@ -40,9 +43,36 @@ namespace HqxSharpTest
 			this.Display = display;
 		}
 
-		public string ImageDirectory { get; set; }
+		public string ImageDirectory
+		{
+			get { return m_strImageDir; }
+			set {
+				if (String.IsNullOrEmpty(value)) {
+#pragma warning disable RECS0143 // Cannot resolve symbol in text argument
+					throw new ArgumentNullException("ImageDirectory");
+				} else if (value.IndexOfAny(Path.GetInvalidPathChars()) >= 0) {
+#pragma warning disable CC0002 // Invalid argument name
+					throw new ArgumentException("This supplied value is not a valid path because it contains illegal characters.", "ImageDirectory");
+#pragma warning restore CC0002 // Invalid argument name
+				} else if (!Directory.Exists(value)) {
+					throw new DirectoryNotFoundException("The image directory " + value + " does not exist.");
+				} else {
+					m_strImageDir = Path.GetFullPath(value);
+				}
+			}
+		}
 
-		public TestBenchDisplay Display { get; set; }
+		public TestBenchDisplay Display
+		{
+			get { return m_objDisplay; }
+			set {
+				if (value == null) {
+					throw new ArgumentNullException("Display");
+#pragma warning restore RECS0143 // Cannot resolve symbol in text argument
+				}
+				m_objDisplay = value;
+			}
+		}
 
 		public void Run()
 		{
