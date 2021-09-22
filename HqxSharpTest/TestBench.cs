@@ -101,7 +101,8 @@ namespace HqxSharpTest
 
 		private static bool RemoveConfigFiles(string path)
 		{
-			return Path.GetExtension(path) == ".config";
+			var ext = Path.GetExtension(path);
+			return (ext == ".config") || (ext.IndexOf('g') < 0);
 		}
 
 		private static List<string> FindImages(string directory)
