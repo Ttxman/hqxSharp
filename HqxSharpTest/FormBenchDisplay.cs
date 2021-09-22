@@ -20,6 +20,7 @@
 
 using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 // Disable warnings for features introduced in later versions of C#
@@ -78,7 +79,11 @@ namespace HqxSharpTest
 			}
 
 			// Draw the picture
-			m_gfxForm.DrawImageUnscaled(scaled, 0, 0);
+			try {
+				m_gfxForm.DrawImageUnscaled(scaled, 0, 0);
+			} catch (ExternalException) {
+				// Ignore GDI+ general error when a user closes window
+			}
 
 			// Yield time for the Windows Forms event loop
 			Application.DoEvents();
