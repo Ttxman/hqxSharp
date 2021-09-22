@@ -47,7 +47,7 @@ namespace HqxSharpTest
 
 		public override void OnEnd(DateTime globalStart)
 		{
-			Console.WriteLine(base.FormatEndMessage(globalStart));
+			Console.WriteLine(FormatEndMessage(globalStart));
 			Console.WriteLine("Press Enter to exit...");
 			Console.ReadLine();
 		}

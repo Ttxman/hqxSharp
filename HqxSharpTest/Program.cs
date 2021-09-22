@@ -41,9 +41,11 @@ namespace HqxSharpTest
 #if (Graphical)
 			Program.ImageDirectory = strImageDirectory;
 
-			// Standard Windows Forms init. Test bench will be run in its Shown event
+			// Standard Windows Forms application initialization. Test bench will be run in the Shown event of the form.
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
+			using (var form1 = new Form1()) {
+				Application.Run(form1);
+			}
 			Application.DoEvents();
 #else
 			new TestBench(strImageDirectory, new ConsoleBenchDisplay()).Run();

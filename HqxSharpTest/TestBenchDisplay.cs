@@ -21,6 +21,9 @@
 using System;
 using System.Drawing;
 
+// Disable warnings for features introduced in later versions of C#
+#pragma warning disable CC0048 // Use string interpolation instead of String.Format
+
 namespace HqxSharpTest
 {
 	internal abstract class TestBenchDisplay
@@ -35,7 +38,7 @@ namespace HqxSharpTest
 
 		public abstract void OnEnd(DateTime globalStart);
 
-		protected string FormatEndMessage(DateTime globalStart)
+		protected static string FormatEndMessage(DateTime globalStart)
 		{
 			return String.Format("Ended after {1:g} of processing{0}GC memory: {2:n1}MiB before collection, {3:n1}MiB after",
 			 Environment.NewLine, DateTime.UtcNow - globalStart,

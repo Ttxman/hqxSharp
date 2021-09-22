@@ -22,13 +22,16 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+// Disable warnings for features introduced in later versions of C#
+#pragma warning disable CA1507 // Use nameof to express symbol names
+
 namespace HqxSharpTest
 {
 	internal sealed class FormBenchDisplay : TestBenchDisplay, IDisposable
 	{
 		private readonly Form m_frmWindow;
 		private Graphics m_gfxForm;
-		private bool m_blnDisposed;
+		private bool m_blnDisposed; // To detect redundant calls
 
 		public FormBenchDisplay(Form window)
 		{
@@ -84,7 +87,7 @@ namespace HqxSharpTest
 
 		public override void OnEnd(DateTime globalStart)
 		{
-			this.ShowModal(MessageBoxIcon.Information, "Completed", base.FormatEndMessage(globalStart));
+			this.ShowModal(MessageBoxIcon.Information, "Completed", FormatEndMessage(globalStart));
 			m_frmWindow.Close();
 		}
 

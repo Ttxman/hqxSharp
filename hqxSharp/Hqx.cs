@@ -27,6 +27,9 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 
+// Disable warnings for features introduced in later versions of C#
+#pragma warning disable CA1507 // Use nameof to express symbol names
+
 namespace hqx
 {
 	/// <summary>

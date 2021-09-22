@@ -24,6 +24,10 @@ using System.Drawing;
 using System.IO;
 using hqx;
 
+// Disable warnings for features introduced in later versions of C#
+#pragma warning disable CC0048 // Use string interpolation instead of String.Format
+#pragma warning disable U2U1104 // Do not use composite formatting to concatenate strings
+
 namespace HqxSharpTest
 {
 	internal sealed class TestBench
