@@ -31,7 +31,6 @@ namespace HqxSharpTest
 	{
 		private readonly Form m_frmWindow;
 		private Graphics m_gfxForm;
-		private bool m_blnDisposed; // To detect redundant calls
 
 		public FormBenchDisplay(Form window)
 		{
@@ -96,12 +95,44 @@ namespace HqxSharpTest
 			MessageBox.Show(m_frmWindow, message, caption, MessageBoxButtons.OK, icon);
 		}
 
+		#region IDisposable Support
+		private bool m_blnDisposed; // To detect redundant calls
+
+		private /*protected virtual*/ void Dispose(bool disposing)
+		{
+			if (!m_blnDisposed) {
+				if (disposing) {
+					// dispose managed state (managed objects).
+					if (m_gfxForm != null) {
+						m_gfxForm.Dispose();
+					}
+				}
+
+				// free unmanaged resources (unmanaged objects) and override a finalizer below.
+
+				// set large fields to null.
+
+				m_blnDisposed = true;
+			}
+		}
+
+		// override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+#if (false)
+		~FormBenchDisplay()
+		{
+			// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+			this.Dispose(false);
+		}
+#endif
+
+		// This code added to correctly implement the disposable pattern.
 		public void Dispose()
 		{
-			if (m_gfxForm != null) {
-				m_gfxForm.Dispose();
-			}
-			m_blnDisposed = true;
+			// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+			this.Dispose(true);
+			// uncomment the following line if the finalizer is overridden above.
+			// GC.SuppressFinalize(this);
 		}
+		#endregion
 	}
 }
