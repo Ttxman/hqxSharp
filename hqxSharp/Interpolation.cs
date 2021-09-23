@@ -96,7 +96,7 @@ namespace hqx
 
 			for (var i = 0; i < weightingsAndColours.Length / 2; i++) {
 				var weighting = weightingsAndColours[i];
-				var colour = weightingsAndColours[weightingsAndColours.Length / 2 + i];
+				var colour = weightingsAndColours[(weightingsAndColours.Length / 2) + i];
 
 				if (weighting > 0) {
 					var alpha = (colour >> AlphaShift) * weighting;

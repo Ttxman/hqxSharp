@@ -76,10 +76,10 @@ namespace hqx
 			var YUV1 = RgbCompactYuv.GetYuv(c1);
 			var YUV2 = RgbCompactYuv.GetYuv(c2);
 
-			return ((Math.Abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY) ||
+			return (Math.Abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY) ||
 			(Math.Abs((YUV1 & Umask) - (YUV2 & Umask)) > trU) ||
 			(Math.Abs((YUV1 & Vmask) - (YUV2 & Vmask)) > trV) ||
-			(Math.Abs(((int)(c1 >> 24) - (int)(c2 >> 24))) > trA));
+			(Math.Abs((int)(c1 >> 24) - (int)(c2 >> 24)) > trA);
 		}
 
 		public static unsafe Bitmap Scale(Bitmap bitmap, byte factor, HqxSharpParameters parameters)

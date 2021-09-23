@@ -21,7 +21,7 @@
 #define Graphical
 using System;
 using System.IO;
-#if (Graphical)
+#if Graphical
 using System.Windows.Forms;
 #endif
 
@@ -32,14 +32,14 @@ namespace HqxSharpTest
 	{
 		internal static string ImageDirectory { get; private set; }
 
-#if (Graphical)
+#if Graphical
 		[STAThread]
 #endif
 		private static void Main(string[] args)
 		{
 			var strImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
 
-#if (Graphical)
+#if Graphical
 			Program.ImageDirectory = strImageDirectory;
 
 			// Standard Windows Forms application initialization. Test bench will be run in the Shown event of the form.

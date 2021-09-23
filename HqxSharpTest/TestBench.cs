@@ -149,7 +149,7 @@ namespace HqxSharpTest
 			var f64ScaleSeconds = tsGlobalScale.TotalSeconds;
 			var f64SinceStart = (double)(dtmLastSecond - dtmGlobalStart).Ticks;
 			this.Display.Progress("{0,5}/{1,5} {2,3}% done   Avg {3,4:#0.0}% load {4,4:#0.0}% hq3x {5,5:n1}kiB/s {6,4:n1}FPS {7:n2}Mpx/s",
-			 done, count, (100 * done) / count,
+			 done, count, 100 * done / count,
 			 100 * tsGlobalLoad.Ticks / f64SinceStart,
 			 100 * tsGlobalScale.Ticks / f64SinceStart,
 			 lngGlobalSize * (1 / 1024.0) / f64ScaleSeconds,

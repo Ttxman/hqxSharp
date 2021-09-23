@@ -122,7 +122,7 @@ namespace HqxSharpTest
 		}
 
 		// override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-#if (false)
+#if false
 		~FormBenchDisplay()
 		{
 			// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
