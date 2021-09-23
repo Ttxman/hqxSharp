@@ -23,32 +23,50 @@ using System.Runtime.InteropServices;
 
 namespace hqx
 {
-	[StructLayout(LayoutKind.Auto)]
+	[StructLayout(LayoutKind.Explicit)]
 	public struct HqxSharpParameters : IEquatable<HqxSharpParameters>
 	{
 		public static readonly unsafe int Size = sizeof(HqxSharpParameters);
 
-		public static readonly HqxSharpParameters Default = Create();
+		public static readonly HqxSharpParameters Default = Create(0x00300706);
+
+		[FieldOffset(0)]
+		public uint AllThresholds;
 
 		/// <summary>The Y (luminance) threshold.</summary>
-		public uint LumaThreshold { get; set; }
+		[FieldOffset(1)]
+		public byte LumaThreshold;
 
 		/// <summary>The U (chrominance) threshold.</summary>
-		public uint BlueishThreshold { get; set; }
+		[FieldOffset(2)]
+		public byte BlueishThreshold;
 
 		/// <summary>The V (chrominance) threshold.</summary>
-		public uint ReddishThreshold { get; set; }
+		[FieldOffset(3)]
+		public byte ReddishThreshold;
 
 		/// <summary>The A (transparency) threshold.</summary>
-		public uint AlphaThreshold { get; set; }
+		[FieldOffset(0)]
+		public byte AlphaThreshold;
 
 		/// <summary>Used for images that can be seamlessly repeated horizontally.</summary>
-		public bool WrapX { get; set; }
+		[FieldOffset(4)]
+		public bool WrapX;
 
 		/// <summary>Used for images that can be seamlessly repeated vertically.</summary>
-		public bool WrapY { get; set; }
+		[FieldOffset(5)]
+		public bool WrapY;
 
-		public static HqxSharpParameters Create(uint luma = 48, uint u = 7, uint v = 6, uint alpha = 0, bool wrapX = false, bool wrapY = false)
+		public static HqxSharpParameters Create(uint thresholds, bool wrapX = false, bool wrapY = false)
+		{
+			var parameters = new HqxSharpParameters();
+			parameters.AllThresholds = thresholds;
+			parameters.WrapX = wrapX;
+			parameters.WrapY = wrapY;
+			return parameters;
+		}
+
+		public static HqxSharpParameters Create(byte luma = 48, byte u = 7, byte v = 6, byte alpha = 0, bool wrapX = false, bool wrapY = false)
 		{
 			var parameters = new HqxSharpParameters();
 			parameters.LumaThreshold = luma;
@@ -67,22 +85,16 @@ namespace hqx
 
 		public bool Equals(HqxSharpParameters other)
 		{
-			return (this.LumaThreshold == other.LumaThreshold) &&
-			 (this.BlueishThreshold == other.BlueishThreshold) &&
-			 (this.ReddishThreshold == other.ReddishThreshold) &&
-			 (this.AlphaThreshold == other.AlphaThreshold) &&
-			 (this.WrapX == other.WrapX) &&
-			 (this.WrapY == other.WrapY);
+			return (AllThresholds == other.AllThresholds) &&
+			 (WrapX == other.WrapX) &&
+			 (WrapY == other.WrapY);
 		}
 
 		public override int GetHashCode()
 		{
-			return (int)((this.AlphaThreshold << 24) |
-			 (this.LumaThreshold << 16) |
-			 (this.ReddishThreshold << 8) |
-			 this.BlueishThreshold |
-			 (this.WrapX ? 1u : 0u) << 15 |
-			 (this.WrapY ? 1u : 0u) << 7);
+			return (int)(AllThresholds |
+			 (WrapX ? 1u : 0u) << 15 |
+			 (WrapY ? 1u : 0u) << 7);
 		}
 
 		public static bool operator ==(HqxSharpParameters left, HqxSharpParameters right)
@@ -98,8 +110,8 @@ namespace hqx
 		public override string ToString()
 		{
 			return String.Format("Thresholds: {{ Y:{0}, U:{1}, V:{2}, A:{3} }}, Wrap: {{ X:{4}, Y:{5} }}",
-			 this.LumaThreshold, this.BlueishThreshold, this.ReddishThreshold, this.AlphaThreshold,
-			 this.WrapX, this.WrapY);
+			 LumaThreshold, BlueishThreshold, ReddishThreshold, AlphaThreshold,
+			 WrapX, WrapY);
 		}
 	}
 }
