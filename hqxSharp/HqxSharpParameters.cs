@@ -37,19 +37,19 @@ namespace hqx
 		public readonly uint AllThresholds;
 
 		/// <summary>The Y (luminance) threshold.</summary>
-		[FieldOffset(1)]
+		[FieldOffset(2)]
 		public readonly byte LumaThreshold;
 
 		/// <summary>The U (chrominance) threshold.</summary>
-		[FieldOffset(2)]
+		[FieldOffset(1)]
 		public readonly byte BlueishThreshold;
 
 		/// <summary>The V (chrominance) threshold.</summary>
-		[FieldOffset(3)]
+		[FieldOffset(0)]
 		public readonly byte ReddishThreshold;
 
 		/// <summary>The A (transparency) threshold.</summary>
-		[FieldOffset(0)]
+		[FieldOffset(3)]
 		public readonly byte AlphaThreshold;
 
 		/// <summary>Used for images that can be seamlessly repeated horizontally.</summary>
