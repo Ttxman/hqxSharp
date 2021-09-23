@@ -73,8 +73,8 @@ namespace hqx
 		/// <returns>Returns true if colors differ more than the thresholds permit, otherwise false.</returns>
 		private static bool Diff(uint c1, uint c2, uint trY, uint trU, uint trV, uint trA)
 		{
-			int YUV1 = RgbYuv.GetYuv(c1);
-			int YUV2 = RgbYuv.GetYuv(c2);
+			int YUV1 = RgbCompactYuv.GetYuv(c1);
+			int YUV2 = RgbCompactYuv.GetYuv(c2);
 
 			return ((Math.Abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY) ||
 			(Math.Abs((YUV1 & Umask) - (YUV2 & Umask)) > trU) ||
