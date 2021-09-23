@@ -33,7 +33,7 @@ namespace hqx
 
 		public static readonly HqxSharpParameters Default = Create();
 
-		[FieldOffset(0)]
+		[FieldOffset(0)][CLSCompliant(false)]
 		public readonly uint AllThresholds;
 
 		/// <summary>The Y (luminance) threshold.</summary>
@@ -65,6 +65,7 @@ namespace hqx
 			return new HqxSharpParameters(0x00300706, false, false);
 		}
 
+		[CLSCompliant(false)]
 		public HqxSharpParameters(uint thresholds, bool wrapX, bool wrapY)
 		{
 			LumaThreshold = 0;

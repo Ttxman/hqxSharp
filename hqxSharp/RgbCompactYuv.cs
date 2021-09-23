@@ -17,6 +17,7 @@
  * along with hqxSharp. If not, see <http://www.gnu.org/licenses/>.
  */
 
+using System;
 using System.Collections.Generic;
 
 namespace hqx
@@ -35,6 +36,7 @@ namespace hqx
 		private static readonly IDictionary<uint, int> s_dicRgbYuv =
 		 new Dictionary<uint, int>();
 
+		[CLSCompliant(false)]
 		public static int GetYuv(uint rgb)
 		{
 			const uint RgbMask = 0x00ffffff;
