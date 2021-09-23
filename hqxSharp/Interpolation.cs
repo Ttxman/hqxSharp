@@ -94,7 +94,7 @@ namespace hqx
 			uint totalRedBlue = 0;
 			uint totalAlpha = 0;
 
-			for (int i = 0; i < weightingsAndColours.Length / 2; i++) {
+			for (var i = 0; i < weightingsAndColours.Length / 2; i++) {
 				var weighting = weightingsAndColours[i];
 				var colour = weightingsAndColours[weightingsAndColours.Length / 2 + i];
 

@@ -51,12 +51,12 @@ namespace hqx
 			//Don't shift trA, as it uses shift right instead of a mask for comparisons.
 			trY <<= 2 * 8;
 			trU <<= 1 * 8;
-			int dpL = Xres * 3;
+			var dpL = Xres * 3;
 
 			int prevline, nextline;
 			var w = new uint[9];
 
-			for (int j = 0; j < Yres; j++) {
+			for (var j = 0; j < Yres; j++) {
 				if (j > 0) {
 					prevline = -Xres;
 				} else if (wrapY) {
@@ -72,7 +72,7 @@ namespace hqx
 					nextline = 0;
 				}
 
-				for (int i = 0; i < Xres; i++) {
+				for (var i = 0; i < Xres; i++) {
 					w[1] = *(sp + prevline);
 					w[4] = *sp;
 					w[7] = *(sp + nextline);
@@ -105,10 +105,10 @@ namespace hqx
 						w[8] = w[7];
 					}
 
-					int pattern = 0;
-					int flag = 1;
+					var pattern = 0;
+					var flag = 1;
 
-					for (int k = 0; k < 9; k++) {
+					for (var k = 0; k < 9; k++) {
 						if (k == 4) {
 							continue;
 						}

@@ -73,8 +73,8 @@ namespace hqx
 			const int Umask = 0x0000ff00;
 			const int Vmask = 0x000000ff;
 
-			int YUV1 = RgbCompactYuv.GetYuv(c1);
-			int YUV2 = RgbCompactYuv.GetYuv(c2);
+			var YUV1 = RgbCompactYuv.GetYuv(c1);
+			var YUV2 = RgbCompactYuv.GetYuv(c2);
 
 			return ((Math.Abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY) ||
 			(Math.Abs((YUV1 & Umask) - (YUV2 & Umask)) > trU) ||

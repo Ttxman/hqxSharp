@@ -43,20 +43,20 @@ namespace hqx
 			if (s_dicRgbYuv.ContainsKey(rgb)) {
 				return s_dicRgbYuv[rgb];
 			} else {
-				int r = ((int)rgb & 0xff0000) >> 16;
-				int g = ((int)rgb & 0x00ff00) >> 8;
-				int b = ((int)rgb & 0x0000ff);
+				var r = ((int)rgb & 0xff0000) >> 16;
+				var g = ((int)rgb & 0x00ff00) >> 8;
+				var b = ((int)rgb & 0x0000ff);
 
 				// To prevent a round-trip to the FPU, some fixed-point math is used.
 				// RGB values go from 0 to 255. If we were multiplying them by
 				// 65793, they would go from 0 to 16777215 (2^24-1)
 				// After scaling coefficients (found in RgbYuv), a right shift 
 				// is performed to bring numbers back to a 0..255 scale.
-				int y = ((+19672 * r + 38620 * g + 7500 * b) >> 16);
-				int u = ((-11119 * r - 21777 * g + 32896 * b) >> 16) + 128;
-				int v = ((+32896 * r - 27567 * g - 5329 * b) >> 16) + 128;
+				var y = ((+19672 * r + 38620 * g + 7500 * b) >> 16);
+				var u = ((-11119 * r - 21777 * g + 32896 * b) >> 16) + 128;
+				var v = ((+32896 * r - 27567 * g - 5329 * b) >> 16) + 128;
 
-				int yuv = (y << 16) | (u << 8) | v;
+				var yuv = (y << 16) | (u << 8) | v;
 				s_dicRgbYuv.Add(rgb, yuv);
 				return yuv;
 			}
