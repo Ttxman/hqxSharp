@@ -122,6 +122,7 @@ namespace hqx
 						flag <<= 1;
 					}
 
+#pragma warning disable CC0120 // Your Switch maybe include default clause
 					switch (pattern) {
 						case 0:
 						case 1:
