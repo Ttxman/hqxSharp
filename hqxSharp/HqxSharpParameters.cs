@@ -21,6 +21,9 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Disable warnings for features introduced in later versions of C#
+#pragma warning disable CC0048 // Use string interpolation instead of String.Format
+
 namespace hqx
 {
 	[StructLayout(LayoutKind.Explicit)]
@@ -28,7 +31,7 @@ namespace hqx
 	{
 		public static readonly unsafe int Size = sizeof(HqxSharpParameters);
 
-		public static readonly HqxSharpParameters Default = Create(0x00300706);
+		public static readonly HqxSharpParameters Default = Create();
 
 		[FieldOffset(0)]
 		public uint AllThresholds;
@@ -57,7 +60,12 @@ namespace hqx
 		[FieldOffset(5)]
 		public bool WrapY;
 
-		public static HqxSharpParameters Create(uint thresholds, bool wrapX = false, bool wrapY = false)
+		public static HqxSharpParameters Create()
+		{
+			return Create(0x00300706, false, false);
+		}
+
+		public static HqxSharpParameters Create(uint thresholds, bool wrapX, bool wrapY)
 		{
 			var parameters = new HqxSharpParameters();
 			parameters.AllThresholds = thresholds;
@@ -66,7 +74,7 @@ namespace hqx
 			return parameters;
 		}
 
-		public static HqxSharpParameters Create(byte luma = 48, byte u = 7, byte v = 6, byte alpha = 0, bool wrapX = false, bool wrapY = false)
+		public static HqxSharpParameters Create(byte luma, byte u, byte v, byte alpha, bool wrapX, bool wrapY)
 		{
 			var parameters = new HqxSharpParameters();
 			parameters.LumaThreshold = luma;
