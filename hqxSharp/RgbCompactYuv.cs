@@ -32,13 +32,13 @@ namespace hqx
 	/// </remarks>
 	public static class RgbCompactYuv
 	{
-		const uint RgbMask = 0x00ffffff;
-
-		private static IDictionary<uint, int> s_dicRgbYuv =
+		private static readonly IDictionary<uint, int> s_dicRgbYuv =
 		 new Dictionary<uint, int>();
 
 		public static int GetYuv(uint rgb)
 		{
+			const uint RgbMask = 0x00ffffff;
+
 			rgb &= RgbMask;
 			if (s_dicRgbYuv.ContainsKey(rgb)) {
 				return s_dicRgbYuv[rgb];
@@ -48,7 +48,7 @@ namespace hqx
 				int b = ((int)rgb & 0x0000ff);
 
 				// To prevent a round-trip to the FPU, some fixed-point math is used.
-				// RGB values go from 0 to 255. If we were multipling them by
+				// RGB values go from 0 to 255. If we were multiplying them by
 				// 65793, they would go from 0 to 16777215 (2^24-1)
 				// After scaling coefficients (found in RgbYuv), a right shift 
 				// is performed to bring numbers back to a 0..255 scale.

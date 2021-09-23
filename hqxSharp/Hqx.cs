@@ -57,10 +57,6 @@ namespace hqx
 	/// </remarks>
 	public static partial class HqxSharp
 	{
-		private const int Ymask = 0x00ff0000;
-		private const int Umask = 0x0000ff00;
-		private const int Vmask = 0x000000ff;
-
 		/// <summary>
 		/// Compares two ARGB colors according to the provided Y, U, V and A thresholds.
 		/// </summary>
@@ -73,6 +69,10 @@ namespace hqx
 		/// <returns>Returns true if colors differ more than the thresholds permit, otherwise false.</returns>
 		private static bool Diff(uint c1, uint c2, uint trY, uint trU, uint trV, uint trA)
 		{
+			const int Ymask = 0x00ff0000;
+			const int Umask = 0x0000ff00;
+			const int Vmask = 0x000000ff;
+
 			int YUV1 = RgbCompactYuv.GetYuv(c1);
 			int YUV2 = RgbCompactYuv.GetYuv(c2);
 

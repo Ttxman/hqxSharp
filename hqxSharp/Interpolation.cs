@@ -21,7 +21,6 @@
  * along with hqxSharp. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 namespace hqx
 {
 	/// <summary>
@@ -29,11 +28,6 @@ namespace hqx
 	/// </summary>
 	internal static class Interpolation
 	{
-		private const uint MaskAlpha = 0xff000000;
-		private const uint MaskGreen = 0x0000ff00;
-		private const uint MaskRedBlue = 0x00ff00ff;
-		private const int AlphaShift = 24;
-
 		public static uint Mix3To1(uint c1, uint c2)
 		{
 			return MixColours(3, 1, c1, c2);
@@ -89,6 +83,10 @@ namespace hqx
 		// Parameters: weighting0, weighting1[, ...], colour0, colour1[, ...]
 		public static uint MixColours(params uint[] weightingsAndColours)
 		{
+			const uint MaskGreen = 0x0000ff00;
+			const uint MaskRedBlue = 0x00ff00ff;
+			const int AlphaShift = 24;
+
 			uint totalPartsColour = 0;
 			uint totalPartsAlpha = 0;
 
@@ -101,7 +99,6 @@ namespace hqx
 				var colour = weightingsAndColours[weightingsAndColours.Length / 2 + i];
 
 				if (weighting > 0) {
-
 					var alpha = (colour >> AlphaShift) * weighting;
 
 					totalPartsAlpha += weighting;
