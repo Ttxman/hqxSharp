@@ -27,6 +27,7 @@ using System.Windows.Forms;
 
 namespace HqxSharpTest
 {
+	// TODO : Make a compare bench with unoptimized algorithm to ensure output is the same
 	internal static class Program
 	{
 		internal static string ImageDirectory { get; private set; }

@@ -197,6 +197,7 @@ namespace hqx
 						case 35:
 						case 131:
 						case 163: {
+								// TODO : Make smaller calls
 								*dp = Interpolation.Mix3To1(w[4], w[3]);
 								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[2], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[7], w[3]);
