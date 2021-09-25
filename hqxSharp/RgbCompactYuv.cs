@@ -42,8 +42,9 @@ namespace hqx
 			const uint RgbMask = 0x00ffffff;
 
 			rgb &= RgbMask;
-			if (s_dicRgbYuv.ContainsKey(rgb)) {
-				return s_dicRgbYuv[rgb];
+			int yuv;
+			if (s_dicRgbYuv.TryGetValue(rgb, out yuv)) {
+				return yuv;
 			} else {
 				var r = ((int)rgb & 0xff0000) >> 16;
 				var g = ((int)rgb & 0x00ff00) >> 8;
@@ -58,7 +59,7 @@ namespace hqx
 				var u = (((-11119 * r) - (21777 * g) + (32896 * b)) >> 16) + 128;
 				var v = (((+32896 * r) - (27567 * g) - (5329 * b)) >> 16) + 128;
 
-				var yuv = (y << 16) | (u << 8) | v;
+				yuv = (y << 16) | (u << 8) | v;
 				s_dicRgbYuv.Add(rgb, yuv);
 				return yuv;
 			}
