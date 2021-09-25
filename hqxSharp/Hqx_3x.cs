@@ -57,21 +57,8 @@ namespace hqx
 			var w = new uint[9];
 
 			for (var j = 0; j < Yres; j++) {
-				if (j > 0) {
-					prevline = -Xres;
-				} else if (wrapY) {
-					prevline = Xres * (Yres - 1);
-				} else {
-					prevline = 0;
-				}
-				if (j < Yres - 1) {
-					nextline = Xres;
-				} else if (wrapY) {
-					nextline = -(Xres * (Yres - 1));
-				} else {
-					nextline = 0;
-				}
-
+				prevline = j > 0 ? -Xres : wrapY ? Xres * (Yres - 1) : 0;
+				nextline = j < Yres - 1 ? Xres : wrapY ? -(Xres * (Yres - 1)) : 0;
 				for (var i = 0; i < Xres; i++) {
 					w[1] = *(sp + prevline);
 					w[4] = *sp;
