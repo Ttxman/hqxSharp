@@ -1461,6 +1461,5 @@ namespace hqx
 				dp += dpL;
 			}
 		}
-
 	}
 }

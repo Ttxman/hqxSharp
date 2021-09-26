@@ -4315,6 +4315,5 @@ namespace hqx
 				dp += (dpL * 3);
 			}
 		}
-
 	}
 }
