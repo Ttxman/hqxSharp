@@ -82,6 +82,8 @@ namespace hqx
 			((uint)Math.Abs((int)(c1 >> 24) - (int)(c2 >> 24)) > trA);
 		}
 
+		// Do not put the scaler delegate (Scale2, Scale3, Scale4) in a variable to have a single Scale call.
+		// Even though resulting IL is smaller, code is 3.5% slower at runtime, because of the added if.
 		public static unsafe Bitmap Scale(Bitmap bitmap, byte factor, HqxSharpParameters parameters)
 		{
 			if (factor == 2) {
