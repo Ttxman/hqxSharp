@@ -110,29 +110,37 @@ namespace hqx
 		// Parameters: weighting0, weighting1[, ...], colour0, colour1[, ...]
 		private static uint MixColours(uint w1, uint w2, uint c1, uint c2)
 		{
-			uint totalPartsColour = 0;
-			uint totalPartsAlpha = 0;
-			uint totalGreen = 0;
-			uint totalRedBlue = 0;
-			uint totalAlpha = 0;
+			if (c2 == c1) {
+				return c1;
+			} else {
+				uint totalPartsColour = 0;
+				uint totalPartsAlpha = 0;
+				uint totalGreen = 0;
+				uint totalRedBlue = 0;
+				uint totalAlpha = 0;
 
-			Accumulate(w1, c1, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-			Accumulate(w2, c2, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-			return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
+				Accumulate(w1, c1, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				Accumulate(w2, c2, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
+			}
 		}
 
 		private static uint MixColours(uint w1, uint w2, uint w3, uint c1, uint c2, uint c3)
 		{
-			uint totalPartsColour = 0;
-			uint totalPartsAlpha = 0;
-			uint totalGreen = 0;
-			uint totalRedBlue = 0;
-			uint totalAlpha = 0;
+			if ((c2 == c1) && (c3 == c1)) {
+				return c1;
+			} else {
+				uint totalPartsColour = 0;
+				uint totalPartsAlpha = 0;
+				uint totalGreen = 0;
+				uint totalRedBlue = 0;
+				uint totalAlpha = 0;
 
-			Accumulate(w1, c1, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-			Accumulate(w2, c2, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-			Accumulate(w3, c3, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-			return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
+				Accumulate(w1, c1, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				Accumulate(w2, c2, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				Accumulate(w3, c3, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
+			}
 		}
 
 		private static void Accumulate(uint weighting, uint colour, ref uint totalPartsColour, ref uint totalPartsAlpha, ref uint totalGreen, ref uint totalRedBlue, ref uint totalAlpha)
