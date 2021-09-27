@@ -108,21 +108,6 @@ namespace hqx
 		// This method can overflow between blue and red and from red to nothing when the sum of all weightings is higher than 255.
 		// It only works for weightings with a sum that is a power of two, otherwise the blue value is corrupted.
 		// Parameters: weighting0, weighting1[, ...], colour0, colour1[, ...]
-#if (false)
-		private static uint MixColours(params uint[] weightingsAndColours)
-		{
-			uint totalPartsColour = 0;
-			uint totalPartsAlpha = 0;
-			uint totalGreen = 0;
-			uint totalRedBlue = 0;
-			uint totalAlpha = 0;
-
-			for (int i = 0; i < weightingsAndColours.Length / 2; i++) {
-				Accumulate(weightingsAndColours[i], weightingsAndColours[(weightingsAndColours.Length / 2) + i], ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-			}
-			return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
-		}
-#else
 		private static uint MixColours(uint w1, uint w2, uint c1, uint c2)
 		{
 			uint totalPartsColour = 0;
@@ -149,7 +134,6 @@ namespace hqx
 			Accumulate(w3, c3, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
 			return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
 		}
-#endif
 
 		private static void Accumulate(uint weighting, uint colour, ref uint totalPartsColour, ref uint totalPartsAlpha, ref uint totalGreen, ref uint totalRedBlue, ref uint totalAlpha)
 		{
