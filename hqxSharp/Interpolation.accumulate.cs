@@ -169,18 +169,14 @@ namespace hqx
 			const uint MaskRedBlue = 0x00ff00ff;
 			const int AlphaShift = 24;
 
-			totalAlpha /= totalPartsAlpha;
-			totalAlpha <<= AlphaShift;
+			var alpha2 = (totalAlpha / totalPartsAlpha) << AlphaShift;
 
 			if (totalPartsColour > 0) {
-				totalGreen /= totalPartsColour;
-				totalGreen &= MaskGreen;
-
-				totalRedBlue /= totalPartsColour;
-				totalRedBlue &= MaskRedBlue;
+				totalGreen = (totalGreen / totalPartsColour) & MaskGreen;
+				totalRedBlue = (totalRedBlue / totalPartsColour) & MaskRedBlue;
 			}
 
-			return totalAlpha | totalGreen | totalRedBlue;
+			return alpha2 | totalGreen | totalRedBlue;
 		}
 	}
 }

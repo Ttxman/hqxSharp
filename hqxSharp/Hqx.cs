@@ -76,35 +76,34 @@ namespace hqx
 			var YUV1 = RgbCompactYuv.GetYuv(c1);
 			var YUV2 = RgbCompactYuv.GetYuv(c2);
 
-			return ((uint)Math.Abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY) ||
-			((uint)Math.Abs((YUV1 & Umask) - (YUV2 & Umask)) > trU) ||
-			((uint)Math.Abs((YUV1 & Vmask) - (YUV2 & Vmask)) > trV) ||
-			((uint)Math.Abs((int)(c1 >> 24) - (int)(c2 >> 24)) > trA);
+			return Diff(YUV1, YUV2, Ymask, trY) ||
+			 Diff(YUV1, YUV2, Umask, trU) ||
+			 Diff(YUV1, YUV2, Vmask, trV) ||
+			 ((uint)Math.Abs((int)(c1 >> 24) - (int)(c2 >> 24)) > trA);
 		}
 
-		// Do not put the scaler delegate (Scale2, Scale3, Scale4) in a variable to have a single Scale call.
-		// Even though resulting IL is smaller, code is 3.5% slower at runtime, because of the added if.
-		public static unsafe Bitmap Scale(Bitmap bitmap, byte factor, HqxSharpParameters parameters)
+		private static bool Diff(int yuv1, int yuv2, int mask, uint threshold)
 		{
-			if (factor == 2) {
-				return Scale(bitmap, factor, Scale2, parameters);
-			} else if (factor == 3) {
-				return Scale(bitmap, factor, Scale3, parameters);
-			} else if (factor == 4) {
-				return Scale(bitmap, factor, Scale4, parameters);
+			return (uint)Math.Abs((yuv1 & mask) - (yuv2 & mask)) > threshold;
+		}
+
+		private static readonly unsafe Magnify[] scalers = { Scale2, Scale3, Scale4 };
+
+		public static Bitmap Scale(Bitmap bitmap, byte factor, HqxSharpParameters parameters)
+		{
+			if ((factor >= 2) && (factor <= 4)) {
+				return ScaleCore(bitmap, factor, parameters);
 			} else {
 				throw new ArgumentOutOfRangeException("factor", factor, "Hqx provides a scale factor of 2x, 3x, or 4x");
 			}
 		}
 
-		private static Bitmap Scale(Bitmap bitmap, byte factor, Magnify magnify, HqxSharpParameters parameters)
+		private static Bitmap ScaleCore(Bitmap bitmap, byte factor, HqxSharpParameters parameters)
 		{
-			return Scale(bitmap, factor, magnify,
-			 parameters.LumaThreshold, parameters.BlueishThreshold, parameters.ReddishThreshold, parameters.AlphaThreshold,
-			 parameters.WrapX, parameters.WrapY);
+			return Scale(bitmap, factor, scalers[factor - 2], parameters);
 		}
 
-		private static unsafe Bitmap Scale(Bitmap bitmap, byte factor, Magnify magnify, uint trY, uint trU, uint trV, uint trA, bool wrapX, bool wrapY)
+		private static unsafe Bitmap Scale(Bitmap bitmap, byte factor, Magnify magnify, HqxSharpParameters parameters)
 		{
 			if (bitmap == null) {
 				throw new ArgumentNullException("bitmap");
@@ -112,16 +111,17 @@ namespace hqx
 			if (magnify == null) {
 				throw new ArgumentNullException("magnify");
 			}
+			Bitmap dest = null;
+			BitmapData bmpData = null, destData = null;
 			var Xres = bitmap.Width;
 			var Yres = bitmap.Height;
-			BitmapData bmpData = null, destData = null;
-			Bitmap dest = null;
 			try {
 				dest = new Bitmap(checked((short)(Xres * factor)), checked((short)(Yres * factor)));
-				bmpData = bitmap.LockBits(new Rectangle(0, 0, Xres, Yres), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-				destData = dest.LockBits(new Rectangle(Point.Empty, dest.Size), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-				magnify((uint*)bmpData.Scan0.ToPointer(), (uint*)destData.Scan0.ToPointer(), Xres, Yres, trY, trU, trV, trA, wrapX, wrapY);
-				return dest;
+				bmpData = LockBits(bitmap, ImageLockMode.ReadOnly);
+				destData = LockBits(dest, ImageLockMode.WriteOnly);
+				magnify(StartPointer(bmpData), StartPointer(destData), Xres, Yres,
+				 parameters.LumaThreshold, parameters.BlueishThreshold, parameters.ReddishThreshold, parameters.AlphaThreshold,
+				 parameters.WrapX, parameters.WrapY);
 			} finally {
 				if (bmpData != null) {
 					bitmap.UnlockBits(bmpData);
@@ -130,6 +130,17 @@ namespace hqx
 					dest.UnlockBits(destData);
 				}
 			}
+			return dest;
+		}
+
+		private static unsafe uint* StartPointer(BitmapData bmpData)
+		{
+			return (uint*)bmpData.Scan0.ToPointer();
+		}
+
+		private static BitmapData LockBits(Bitmap source, ImageLockMode lockMode)
+		{
+			return source.LockBits(new Rectangle(Point.Empty, source.Size), lockMode, PixelFormat.Format32bppArgb);
 		}
 	}
 }
