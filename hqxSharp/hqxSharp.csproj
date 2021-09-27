@@ -46,7 +46,7 @@
     <Compile Include="Hqx_2x.cs" />
     <Compile Include="Hqx_3x.cs" />
     <Compile Include="Hqx_4x.cs" />
-    <Compile Include="Interoplation.accumulate.cs" />
+    <Compile Include="Interpolation.accumulate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RgbCompactYuv.cs" />
   </ItemGroup>
