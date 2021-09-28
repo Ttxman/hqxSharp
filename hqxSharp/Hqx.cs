@@ -147,18 +147,14 @@ namespace hqx
 		{
 			var pattern = 0;
 			var flag = 1;
-
+			var middle = w[4];
 			for (int k = 0; k < 9; k++) {
-				if (k == 4) {
-					continue;
-				}
-
-				if (w[k] != w[4]) {
-					if (Diff(w[4], w[k], trY, trU, trV, trA)) {
+				if (k != 4) {
+					if ((w[k] != middle) && Diff(middle, w[k], trY, trU, trV, trA)) {
 						pattern |= flag;
 					}
+					flag <<= 1;
 				}
-				flag <<= 1;
 			}
 
 			return pattern;
