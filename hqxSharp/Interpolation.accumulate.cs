@@ -114,14 +114,13 @@ namespace hqx
 				return c1;
 			} else {
 				uint totalPartsColour = 0;
-				uint totalPartsAlpha = 0;
 				uint totalGreen = 0;
 				uint totalRedBlue = 0;
 				uint totalAlpha = 0;
 
-				Accumulate(w1, c1, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-				Accumulate(w2, c2, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-				return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
+				Accumulate(w1, c1, ref totalPartsColour, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				Accumulate(w2, c2, ref totalPartsColour, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				return Reduce(totalPartsColour, w1 + w2, totalGreen, totalRedBlue, totalAlpha);
 			}
 		}
 
@@ -131,35 +130,30 @@ namespace hqx
 				return c1;
 			} else {
 				uint totalPartsColour = 0;
-				uint totalPartsAlpha = 0;
 				uint totalGreen = 0;
 				uint totalRedBlue = 0;
 				uint totalAlpha = 0;
 
-				Accumulate(w1, c1, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-				Accumulate(w2, c2, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-				Accumulate(w3, c3, ref totalPartsColour, ref totalPartsAlpha, ref totalGreen, ref totalRedBlue, ref totalAlpha);
-				return Reduce(totalPartsColour, totalPartsAlpha, totalGreen, totalRedBlue, totalAlpha);
+				Accumulate(w1, c1, ref totalPartsColour, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				Accumulate(w2, c2, ref totalPartsColour, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				Accumulate(w3, c3, ref totalPartsColour, ref totalGreen, ref totalRedBlue, ref totalAlpha);
+				return Reduce(totalPartsColour, w1 + w2 + w3, totalGreen, totalRedBlue, totalAlpha);
 			}
 		}
 
-		private static void Accumulate(uint weighting, uint colour, ref uint totalPartsColour, ref uint totalPartsAlpha, ref uint totalGreen, ref uint totalRedBlue, ref uint totalAlpha)
+		private static void Accumulate(uint weighting, uint colour, ref uint totalPartsColour, ref uint totalGreen, ref uint totalRedBlue, ref uint totalAlpha)
 		{
 			const uint MaskGreen = 0x0000ff00;
 			const uint MaskRedBlue = 0x00ff00ff;
 			const int AlphaShift = 24;
 
-			if (weighting > 0) {
-				var alpha = (colour >> AlphaShift) * weighting;
+			var alpha = (colour >> AlphaShift) * weighting;
+			if (alpha != 0) {
+				totalAlpha += alpha;
 
-				totalPartsAlpha += weighting;
-				if (alpha != 0) {
-					totalAlpha += alpha;
-
-					totalPartsColour += weighting;
-					totalGreen += (colour & MaskGreen) * weighting;
-					totalRedBlue += (colour & MaskRedBlue) * weighting;
-				}
+				totalPartsColour += weighting;
+				totalGreen += (colour & MaskGreen) * weighting;
+				totalRedBlue += (colour & MaskRedBlue) * weighting;
 			}
 		}
 
