@@ -198,5 +198,14 @@ namespace hqx
 				w[8] = w[7];
 			}
 		}
+
+		private static unsafe void All4Mix2To1To1(uint* dp, int dpL, uint[] w, int p0a2, int p0a3, int p1a2, int p1a3, int p2a2, int p2a3, int p3a2, int p3a3)
+		{
+			var middle = w[4];
+			*dp = Interpolation.Mix2To1To1(middle, w[p0a2], w[p0a3]);
+			*(dp + 1) = Interpolation.Mix2To1To1(middle, w[p1a2], w[p1a3]);
+			*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[p2a2], w[p2a3]);
+			*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[p3a2], w[p3a3]);
+		}
 	}
 }

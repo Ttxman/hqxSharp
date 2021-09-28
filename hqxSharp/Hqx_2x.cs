@@ -81,50 +81,35 @@ namespace hqx
 						case 161:
 						case 37:
 						case 165: {
-								*dp = Interpolation.Mix2To1To1(w[4], w[3], w[1]);
-								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[1], w[5]);
-								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[7], w[3]);
-								*(dp + dpL + 1) = Interpolation.Mix2To1To1(w[4], w[5], w[7]);
+								All4Mix2To1To1(dp, dpL, w, 3, 1, 1, 5, 7, 3, 5, 7);
 								break;
 							}
 						case 2:
 						case 34:
 						case 130:
 						case 162: {
-								*dp = Interpolation.Mix2To1To1(w[4], w[0], w[3]);
-								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[2], w[5]);
-								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[7], w[3]);
-								*(dp + dpL + 1) = Interpolation.Mix2To1To1(w[4], w[5], w[7]);
+								All4Mix2To1To1(dp, dpL, w, 0, 3, 2, 5, 7, 3, 5, 7);
 								break;
 							}
 						case 16:
 						case 17:
 						case 48:
 						case 49: {
-								*dp = Interpolation.Mix2To1To1(w[4], w[3], w[1]);
-								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[2], w[1]);
-								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[7], w[3]);
-								*(dp + dpL + 1) = Interpolation.Mix2To1To1(w[4], w[8], w[7]);
+								All4Mix2To1To1(dp, dpL, w, 3, 1, 2, 1, 7, 3, 8, 7);
 								break;
 							}
 						case 64:
 						case 65:
 						case 68:
 						case 69: {
-								*dp = Interpolation.Mix2To1To1(w[4], w[3], w[1]);
-								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[1], w[5]);
-								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[6], w[3]);
-								*(dp + dpL + 1) = Interpolation.Mix2To1To1(w[4], w[8], w[5]);
+								All4Mix2To1To1(dp, dpL, w, 3, 1, 1, 5, 6, 3, 8, 5);
 								break;
 							}
 						case 8:
 						case 12:
 						case 136:
 						case 140: {
-								*dp = Interpolation.Mix2To1To1(w[4], w[0], w[1]);
-								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[1], w[5]);
-								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[6], w[7]);
-								*(dp + dpL + 1) = Interpolation.Mix2To1To1(w[4], w[5], w[7]);
+								All4Mix2To1To1(dp, dpL, w, 0, 1, 1, 5, 6, 7, 5, 7);
 								break;
 							}
 						case 3:
@@ -241,17 +226,11 @@ namespace hqx
 								break;
 							}
 						case 66: {
-								*dp = Interpolation.Mix2To1To1(w[4], w[0], w[3]);
-								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[2], w[5]);
-								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[6], w[3]);
-								*(dp + dpL + 1) = Interpolation.Mix2To1To1(w[4], w[8], w[5]);
+								All4Mix2To1To1(dp, dpL, w, 0, 3, 2, 5, 6, 3, 8, 5);
 								break;
 							}
 						case 24: {
-								*dp = Interpolation.Mix2To1To1(w[4], w[0], w[1]);
-								*(dp + 1) = Interpolation.Mix2To1To1(w[4], w[2], w[1]);
-								*(dp + dpL) = Interpolation.Mix2To1To1(w[4], w[6], w[7]);
-								*(dp + dpL + 1) = Interpolation.Mix2To1To1(w[4], w[8], w[7]);
+								All4Mix2To1To1(dp, dpL, w, 0, 1, 2, 1, 6, 7, 8, 7);
 								break;
 							}
 						case 7:
