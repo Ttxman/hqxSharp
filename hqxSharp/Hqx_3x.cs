@@ -60,53 +60,8 @@ namespace hqx
 				prevline = j > 0 ? -Xres : wrapY ? Xres * (Yres - 1) : 0;
 				nextline = j < Yres - 1 ? Xres : wrapY ? -(Xres * (Yres - 1)) : 0;
 				for (var i = 0; i < Xres; i++) {
-					w[1] = *(sp + prevline);
-					w[4] = *sp;
-					w[7] = *(sp + nextline);
-
-					if (i > 0) {
-						w[0] = *(sp + prevline - 1);
-						w[3] = *(sp - 1);
-						w[6] = *(sp + nextline - 1);
-					} else if (wrapX) {
-						w[0] = *(sp + prevline + Xres - 1);
-						w[3] = *(sp + Xres - 1);
-						w[6] = *(sp + nextline + Xres - 1);
-					} else {
-						w[0] = w[1];
-						w[3] = w[4];
-						w[6] = w[7];
-					}
-
-					if (i < Xres - 1) {
-						w[2] = *(sp + prevline + 1);
-						w[5] = *(sp + 1);
-						w[8] = *(sp + nextline + 1);
-					} else if (wrapX) {
-						w[2] = *(sp + prevline - Xres + 1);
-						w[5] = *(sp - Xres + 1);
-						w[8] = *(sp + nextline - Xres + 1);
-					} else {
-						w[2] = w[1];
-						w[5] = w[4];
-						w[8] = w[7];
-					}
-
-					var pattern = 0;
-					var flag = 1;
-
-					for (var k = 0; k < 9; k++) {
-						if (k == 4) {
-							continue;
-						}
-
-						if (w[k] != w[4]) {
-							if (Diff(w[4], w[k], trY, trU, trV, trA)) {
-								pattern |= flag;
-							}
-						}
-						flag <<= 1;
-					}
+					PrepareWorkPixels(sp, Xres, wrapX, prevline, nextline, w, i);
+					var pattern = FindPattern(trY, trU, trV, trA, w);
 
 #pragma warning disable CC0120 // Your Switch maybe include default clause
 					switch (pattern) {
