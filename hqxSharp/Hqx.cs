@@ -79,12 +79,25 @@ namespace hqx
 			return Diff(YUV1, YUV2, Ymask, trY) ||
 			 Diff(YUV1, YUV2, Umask, trU) ||
 			 Diff(YUV1, YUV2, Vmask, trV) ||
-			 ((uint)Math.Abs((int)(c1 >> 24) - (int)(c2 >> 24)) > trA);
+			 ((uint)FastAbs((int)(c1 >> 24) - (int)(c2 >> 24)) > trA);
 		}
 
 		private static bool Diff(int yuv1, int yuv2, int mask, uint threshold)
 		{
-			return (uint)Math.Abs((yuv1 & mask) - (yuv2 & mask)) > threshold;
+			return (uint)FastAbs((yuv1 & mask) - (yuv2 & mask)) > threshold;
+		}
+
+		/// <summary>
+		/// Faster version of absolute value, avoiding branch penalties, from
+		/// https://graphics.stanford.edu/~seander/bithacks.html#IntegerAbs
+		/// </summary>
+		/// <param name="v">Any integer</param>
+		/// <returns>Its absolute value</returns>
+		private static int FastAbs(int v)
+		{
+			const int CHAR_BIT = 8;
+			var mask = v >> (sizeof(int) * CHAR_BIT) - 1;
+			return (v + mask) ^ mask;
 		}
 
 		private static readonly unsafe Magnify[] scalers = { Scale2, Scale3, Scale4 };
