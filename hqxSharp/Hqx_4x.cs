@@ -57,15 +57,19 @@ namespace hqx
 			var dpL = Xres * 2;
 			int j, i;
 
+			var k = 0;
+			var yp = GetAllYuv(sp, Xres, Yres); // Perform color space conversion of source pixels
+			var wy = new int[9];
+
 			for (j = 0; j < Yres; j++) {
-				var prevline = j > 0 ? -Xres : wrapY ? Xres * (Yres - 1) : 0;
-				var nextline = j < Yres - 1 ? Xres : wrapY ? -(Xres * (Yres - 1)) : 0;
+				var prevline = PreviousLine(Xres, Yres, wrapY, j);
+				var nextline = NextLine(Xres, Yres, wrapY, j);
 
 				for (i = 0; i < Xres; i++) {
-					PrepareWorkPixels(sp, Xres, wrapX, prevline, nextline, w, i);
+					PrepareWorkPixels(sp, w, yp, wy, k, Xres, prevline, nextline, i, wrapX);
 					middle = w[4];
-#pragma warning disable CC0120 // Your Switch maybe include default clause
-					switch (FindPattern(w, trY, trU, trV, trA)) {
+					// Find the pattern using YUV values computed previously
+					switch (FindPattern(wy, w, trY, trU, trV, trA)) {
 						case 0:
 						case 1:
 						case 4:
@@ -4267,6 +4271,7 @@ namespace hqx
 					}
 					sp++;
 					dp += 4;
+					k++;
 				}
 				dp += (dpL * 3);
 			}
