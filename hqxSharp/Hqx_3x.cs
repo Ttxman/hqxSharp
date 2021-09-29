@@ -48,24 +48,24 @@ namespace hqx
 
 		private static unsafe void Scale3(uint* sp, uint* dp, int Xres, int Yres, uint trY, uint trU, uint trV, uint trA, bool wrapX, bool wrapY)
 		{
+			var w = new uint[9];
+			uint middle;
+
 			//Don't shift trA, as it uses shift right instead of a mask for comparisons.
 			trY <<= 2 * 8;
 			trU <<= 1 * 8;
-			var dpL = Xres * 3;
+			var dpL = Xres * 2;
+			int j, i;
 
-			int prevline, nextline;
-			var w = new uint[9];
+			for (j = 0; j < Yres; j++) {
+				var prevline = j > 0 ? -Xres : wrapY ? Xres * (Yres - 1) : 0;
+				var nextline = j < Yres - 1 ? Xres : wrapY ? -(Xres * (Yres - 1)) : 0;
 
-			for (var j = 0; j < Yres; j++) {
-				prevline = j > 0 ? -Xres : wrapY ? Xres * (Yres - 1) : 0;
-				nextline = j < Yres - 1 ? Xres : wrapY ? -(Xres * (Yres - 1)) : 0;
-				for (var i = 0; i < Xres; i++) {
-					var middle = w[4];
+				for (i = 0; i < Xres; i++) {
 					PrepareWorkPixels(sp, Xres, wrapX, prevline, nextline, w, i);
-					var pattern = FindPattern(trY, trU, trV, trA, w);
-
+					middle = w[4];
 #pragma warning disable CC0120 // Your Switch maybe include default clause
-					switch (pattern) {
+					switch (FindPattern(trY, trU, trV, trA, w)) {
 						case 0:
 						case 1:
 						case 4:
