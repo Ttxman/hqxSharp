@@ -69,16 +69,20 @@ namespace hqx
 		/// <returns>Returns true if colors differ more than the thresholds permit, otherwise false.</returns>
 		private static bool Diff(uint c1, uint c2, uint trY, uint trU, uint trV, uint trA)
 		{
+			return Diff(RgbCompactYuv.GetYuv(c1), c1, c2, trY, trU, trV, trA);
+		}
+
+		private static bool Diff(int yuv1, uint c1, uint c2, uint trY, uint trU, uint trV, uint trA)
+		{
 			const int Ymask = 0x00ff0000;
 			const int Umask = 0x0000ff00;
 			const int Vmask = 0x000000ff;
 
-			var YUV1 = RgbCompactYuv.GetYuv(c1);
 			var YUV2 = RgbCompactYuv.GetYuv(c2);
 
-			return Diff(YUV1, YUV2, Ymask, trY) ||
-			 Diff(YUV1, YUV2, Umask, trU) ||
-			 Diff(YUV1, YUV2, Vmask, trV) ||
+			return Diff(yuv1, YUV2, Ymask, trY) ||
+			 Diff(yuv1, YUV2, Umask, trU) ||
+			 Diff(yuv1, YUV2, Vmask, trV) ||
 			 ((uint)FastAbs((int)(c1 >> 24) - (int)(c2 >> 24)) > trA);
 		}
 
@@ -156,14 +160,18 @@ namespace hqx
 			return source.LockBits(new Rectangle(Point.Empty, source.Size), lockMode, PixelFormat.Format32bppArgb);
 		}
 
-		private static int FindPattern(uint trY, uint trU, uint trV, uint trA, uint[] w)
+		private static int FindPattern(uint[] w, uint trY, uint trU, uint trV, uint trA)
 		{
+			int k;
 			var pattern = 0;
 			var flag = 1;
 			var middle = w[4];
-			for (int k = 0; k < 9; k++) {
+			uint wk;
+			var yuv1 = RgbCompactYuv.GetYuv(middle);
+			for (k = 0; k < 9; k++) {
 				if (k != 4) {
-					if ((w[k] != middle) && Diff(middle, w[k], trY, trU, trV, trA)) {
+					wk = w[k];
+					if ((wk != middle) && Diff(yuv1, middle, wk, trY, trU, trV, trA)) {
 						pattern |= flag;
 					}
 					flag <<= 1;

@@ -65,7 +65,7 @@ namespace hqx
 					PrepareWorkPixels(sp, Xres, wrapX, prevline, nextline, w, i);
 					middle = w[4];
 #pragma warning disable CC0120 // Your Switch maybe include default clause
-					switch (FindPattern(trY, trU, trV, trA, w)) {
+					switch (FindPattern(w, trY, trU, trV, trA)) {
 						case 0:
 						case 1:
 						case 4:
