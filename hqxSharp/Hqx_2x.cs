@@ -273,7 +273,7 @@ namespace hqx
 						case 22:
 						case 54: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[7]);
 								break;
@@ -283,20 +283,20 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 104:
 						case 108: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[5]);
 								break;
 							}
 						case 11:
 						case 139: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[5], w[7]);
@@ -464,8 +464,8 @@ namespace hqx
 							}
 						case 26:
 						case 31: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[7]);
 								break;
@@ -473,29 +473,29 @@ namespace hqx
 						case 82:
 						case 214: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 88:
 						case 248: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 74:
 						case 107: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[5]);
 								break;
 							}
 						case 27: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[7]);
@@ -503,7 +503,7 @@ namespace hqx
 							}
 						case 86: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
@@ -512,19 +512,19 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 106: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[5]);
 								break;
 							}
 						case 30: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[7]);
 								break;
@@ -533,18 +533,18 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 120: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
 							}
 						case 75: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[5]);
@@ -701,7 +701,7 @@ namespace hqx
 						case 23: {
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*dp = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + 1) = w[4];
+									*(dp + 1) = middle;
 								} else {
 									*dp = Interpolation.Mix5To2To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix2To3To3(middle, w[1], w[5]);
@@ -714,7 +714,7 @@ namespace hqx
 						case 150: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 1) = w[4];
+									*(dp + 1) = middle;
 									*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								} else {
 									*(dp + 1) = Interpolation.Mix2To3To3(middle, w[1], w[5]);
@@ -728,7 +728,7 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								} else {
 									*(dp + 1) = Interpolation.Mix5To2To1(middle, w[5], w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix2To3To3(middle, w[5], w[7]);
@@ -742,7 +742,7 @@ namespace hqx
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								} else {
 									*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[7], w[3]);
 									*(dp + dpL + 1) = Interpolation.Mix2To3To3(middle, w[5], w[7]);
@@ -754,7 +754,7 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL) = w[4];
+									*(dp + dpL) = middle;
 									*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[5]);
 								} else {
 									*(dp + dpL) = Interpolation.Mix2To3To3(middle, w[7], w[3]);
@@ -766,7 +766,7 @@ namespace hqx
 						case 105: {
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
 									*dp = Interpolation.Mix3To1(middle, w[1]);
-									*(dp + dpL) = w[4];
+									*(dp + dpL) = middle;
 								} else {
 									*dp = Interpolation.Mix5To2To1(middle, w[3], w[1]);
 									*(dp + dpL) = Interpolation.Mix2To3To3(middle, w[7], w[3]);
@@ -778,7 +778,7 @@ namespace hqx
 						case 171:
 						case 43: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[7]);
 								} else {
 									*dp = Interpolation.Mix2To3To3(middle, w[3], w[1]);
@@ -791,7 +791,7 @@ namespace hqx
 						case 143:
 						case 15: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
 								} else {
 									*dp = Interpolation.Mix2To3To3(middle, w[3], w[1]);
@@ -804,12 +804,12 @@ namespace hqx
 						case 124: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
 							}
 						case 203: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[5]);
@@ -817,7 +817,7 @@ namespace hqx
 							}
 						case 62: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[7]);
 								break;
@@ -826,12 +826,12 @@ namespace hqx
 								*dp = Interpolation.Mix3To1(middle, w[3]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 118: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
@@ -840,18 +840,18 @@ namespace hqx
 								*dp = Interpolation.Mix3To1(middle, w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 110: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[5]);
 								break;
 							}
 						case 155: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
@@ -917,12 +917,12 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[6]) : Interpolation.Mix6To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 158: {
 								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[0]) : Interpolation.Mix6To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								break;
@@ -930,7 +930,7 @@ namespace hqx
 						case 234: {
 								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[0]) : Interpolation.Mix6To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[5]);
 								break;
 							}
@@ -938,11 +938,11 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
 								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[2]) : Interpolation.Mix6To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 59: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[2]) : Interpolation.Mix6To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[7]);
@@ -951,19 +951,19 @@ namespace hqx
 						case 121: {
 								*dp = Interpolation.Mix3To1(middle, w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[8]) : Interpolation.Mix6To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 87: {
 								*dp = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[3]);
 								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[8]) : Interpolation.Mix6To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 79: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
 								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[6]) : Interpolation.Mix6To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[5]);
@@ -972,13 +972,13 @@ namespace hqx
 						case 122: {
 								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[0]) : Interpolation.Mix6To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[2]) : Interpolation.Mix6To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[8]) : Interpolation.Mix6To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 94: {
 								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[0]) : Interpolation.Mix6To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[6]) : Interpolation.Mix6To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[8]) : Interpolation.Mix6To1To1(middle, w[5], w[7]);
 								break;
@@ -987,11 +987,11 @@ namespace hqx
 								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[0]) : Interpolation.Mix6To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[2]) : Interpolation.Mix6To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[6]) : Interpolation.Mix6To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 91: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[2]) : Interpolation.Mix6To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[6]) : Interpolation.Mix6To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? Interpolation.Mix3To1(middle, w[8]) : Interpolation.Mix6To1To1(middle, w[5], w[7]);
@@ -1101,22 +1101,22 @@ namespace hqx
 							}
 						case 126: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
 							}
 						case 219: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 125: {
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
 									*dp = Interpolation.Mix3To1(middle, w[1]);
-									*(dp + dpL) = w[4];
+									*(dp + dpL) = middle;
 								} else {
 									*dp = Interpolation.Mix5To2To1(middle, w[3], w[1]);
 									*(dp + dpL) = Interpolation.Mix2To3To3(middle, w[7], w[3]);
@@ -1129,7 +1129,7 @@ namespace hqx
 								*dp = Interpolation.Mix3To1(middle, w[1]);
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								} else {
 									*(dp + 1) = Interpolation.Mix5To2To1(middle, w[5], w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix2To3To3(middle, w[5], w[7]);
@@ -1139,7 +1139,7 @@ namespace hqx
 							}
 						case 207: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
 								} else {
 									*dp = Interpolation.Mix2To3To3(middle, w[3], w[1]);
@@ -1153,7 +1153,7 @@ namespace hqx
 								*dp = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL) = w[4];
+									*(dp + dpL) = middle;
 									*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[5]);
 								} else {
 									*(dp + dpL) = Interpolation.Mix2To3To3(middle, w[7], w[3]);
@@ -1164,7 +1164,7 @@ namespace hqx
 						case 190: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 1) = w[4];
+									*(dp + 1) = middle;
 									*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								} else {
 									*(dp + 1) = Interpolation.Mix2To3To3(middle, w[1], w[5]);
@@ -1175,7 +1175,7 @@ namespace hqx
 							}
 						case 187: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[7]);
 								} else {
 									*dp = Interpolation.Mix2To3To3(middle, w[3], w[1]);
@@ -1190,7 +1190,7 @@ namespace hqx
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								} else {
 									*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[7], w[3]);
 									*(dp + dpL + 1) = Interpolation.Mix2To3To3(middle, w[5], w[7]);
@@ -1200,7 +1200,7 @@ namespace hqx
 						case 119: {
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*dp = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + 1) = w[4];
+									*(dp + 1) = middle;
 								} else {
 									*dp = Interpolation.Mix5To2To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix2To3To3(middle, w[1], w[5]);
@@ -1213,13 +1213,13 @@ namespace hqx
 						case 233: {
 								*dp = Interpolation.Mix3To1(middle, w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[5]);
 								break;
 							}
 						case 175:
 						case 47: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[5], w[7]);
@@ -1228,7 +1228,7 @@ namespace hqx
 						case 183:
 						case 151: {
 								*dp = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								break;
@@ -1238,154 +1238,154 @@ namespace hqx
 								*dp = Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 250: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 123: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
 							}
 						case 95: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
 							}
 						case 222: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 252: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[5], w[7]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 249: {
 								*dp = Interpolation.Mix3To1(middle, w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[1]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 235: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix2To1To1(middle, w[2], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[5]);
 								break;
 							}
 						case 111: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[5]);
 								break;
 							}
 						case 63: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix2To1To1(middle, w[8], w[7]);
 								break;
 							}
 						case 159: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[1], w[5]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								break;
 							}
 						case 215: {
 								*dp = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix2To1To1(middle, w[6], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 246: {
 								*dp = Interpolation.Mix2To1To1(middle, w[0], w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 254: {
 								*dp = Interpolation.Mix3To1(middle, w[0]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[5], w[7]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 253: {
 								*dp = Interpolation.Mix3To1(middle, w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[5], w[7]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 251: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[2]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 239: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[3], w[1]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[3], w[1]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[7], w[3]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[5]);
 								break;
 							}
 						case 127: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[8]);
 								break;
 							}
 						case 191: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[1], w[5]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[7]);
 								*(dp + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								break;
 							}
 						case 223: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[1], w[5]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[6]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 247: {
 								*dp = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[1], w[5]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[5], w[7]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[5], w[7]);
 								break;
 							}
 						case 255: {
-								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[3], w[1]);
-								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[7], w[3]);
-								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix14To1To1(middle, w[5], w[7]);
+								*dp = Diff(w[3], w[1], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[3], w[1]);
+								*(dp + 1) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[1], w[5]);
+								*(dp + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[7], w[3]);
+								*(dp + dpL + 1) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix14To1To1(middle, w[5], w[7]);
 								break;
 							}
 					}

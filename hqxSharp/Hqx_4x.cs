@@ -374,10 +374,10 @@ namespace hqx
 									*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 2) = middle;
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
@@ -409,9 +409,9 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -434,10 +434,10 @@ namespace hqx
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[8]);
@@ -454,9 +454,9 @@ namespace hqx
 									*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
+									*(dp + dpL + 1) = middle;
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
@@ -599,17 +599,17 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[7]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -632,14 +632,14 @@ namespace hqx
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -657,15 +657,15 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[1]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -675,17 +675,17 @@ namespace hqx
 						case 11:
 						case 139: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
@@ -709,7 +709,7 @@ namespace hqx
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								} else {
 									*(dp) = Interpolation.Mix3To1(middle, w[1]);
-									*(dp + 1) = Interpolation.Mix3To1(w[1], w[4]);
+									*(dp + 1) = Interpolation.Mix3To1(w[1], middle);
 									*(dp + 2) = Interpolation.Mix5To3(w[1], w[5]);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
 									*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
@@ -743,7 +743,7 @@ namespace hqx
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
 									*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
 									*(dp + dpL + 3) = Interpolation.Mix5To3(w[5], w[1]);
-									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(w[5], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(w[5], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
@@ -770,7 +770,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
 									*(dp + 3) = Interpolation.Mix3To1(middle, w[5]);
-									*(dp + dpL + 3) = Interpolation.Mix3To1(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.Mix3To1(w[5], middle);
 									*(dp + dpL + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[7]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix5To3(w[5], w[7]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix2To1To1(w[7], middle, w[5]);
@@ -808,7 +808,7 @@ namespace hqx
 									*(dp + dpL + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[7]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix2To1To1(w[5], middle, w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix3To1(middle, w[7]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(w[7], middle);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix5To3(w[7], w[5]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
@@ -836,7 +836,7 @@ namespace hqx
 									*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix5To3(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[7]);
 								}
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
@@ -854,7 +854,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL) = Interpolation.Mix3To1(w[3], w[4]);
+									*(dp + dpL) = Interpolation.Mix3To1(w[3], middle);
 									*(dp + dpL + dpL) = Interpolation.Mix5To3(w[3], w[7]);
 									*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
@@ -886,7 +886,7 @@ namespace hqx
 									*(dp + 1) = Interpolation.Mix2To1To1(w[1], middle, w[3]);
 									*(dp + dpL) = Interpolation.Mix5To3(w[3], w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[1]);
-									*(dp + dpL + dpL) = Interpolation.Mix3To1(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.Mix3To1(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -913,7 +913,7 @@ namespace hqx
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix5To3(w[1], w[3]);
-									*(dp + 2) = Interpolation.Mix3To1(w[1], w[4]);
+									*(dp + 2) = Interpolation.Mix3To1(w[1], middle);
 									*(dp + 3) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix2To1To1(w[3], middle, w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[1]);
@@ -1085,25 +1085,25 @@ namespace hqx
 						case 26:
 						case 31: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -1119,27 +1119,27 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -1157,23 +1157,23 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								break;
@@ -1181,29 +1181,29 @@ namespace hqx
 						case 74:
 						case 107: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -1212,17 +1212,17 @@ namespace hqx
 							}
 						case 27: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
@@ -1239,17 +1239,17 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -1271,14 +1271,14 @@ namespace hqx
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -1295,15 +1295,15 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -1314,17 +1314,17 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -1346,14 +1346,14 @@ namespace hqx
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -1370,15 +1370,15 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -1387,17 +1387,17 @@ namespace hqx
 							}
 						case 75: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
@@ -1648,7 +1648,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -1658,7 +1658,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
@@ -1682,7 +1682,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix5To3(middle, w[3]);
@@ -1695,7 +1695,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -1720,7 +1720,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -1730,7 +1730,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -1747,7 +1747,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
@@ -1760,7 +1760,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -1780,7 +1780,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
@@ -1793,7 +1793,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -1813,7 +1813,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -1823,7 +1823,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
@@ -1847,7 +1847,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
@@ -1860,7 +1860,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -1885,7 +1885,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -1895,7 +1895,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -1912,7 +1912,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -1922,7 +1922,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
@@ -1932,7 +1932,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -1942,7 +1942,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -1954,13 +1954,13 @@ namespace hqx
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp) = Interpolation.Mix5To3(middle, w[3]);
 									*(dp + 1) = Interpolation.Mix7To1(middle, w[3]);
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 2) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 2) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
 									*(dp) = Interpolation.Mix3To1(middle, w[1]);
-									*(dp + 1) = Interpolation.Mix3To1(w[1], w[4]);
+									*(dp + 1) = Interpolation.Mix3To1(w[1], middle);
 									*(dp + 2) = Interpolation.Mix5To3(w[1], w[5]);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
 									*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
@@ -1983,10 +1983,10 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 2) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 2) = middle;
+									*(dp + dpL + 3) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix7To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[7]);
 								} else {
@@ -1994,7 +1994,7 @@ namespace hqx
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
 									*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
 									*(dp + dpL + 3) = Interpolation.Mix5To3(w[5], w[1]);
-									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(w[5], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(w[5], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
@@ -2015,13 +2015,13 @@ namespace hqx
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + 3) = Interpolation.Mix5To3(middle, w[1]);
 									*(dp + dpL + 3) = Interpolation.Mix7To1(middle, w[1]);
-									*(dp + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
 									*(dp + 3) = Interpolation.Mix3To1(middle, w[5]);
-									*(dp + dpL + 3) = Interpolation.Mix3To1(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.Mix3To1(w[5], middle);
 									*(dp + dpL + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[7]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix5To3(w[5], w[7]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix2To1To1(w[7], middle, w[5]);
@@ -2049,17 +2049,17 @@ namespace hqx
 								*(dp + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + 3) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
 									*(dp + dpL + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[7]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix2To1To1(w[5], middle, w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix3To1(middle, w[7]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(w[7], middle);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix5To3(w[7], w[5]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
@@ -2076,10 +2076,10 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[1]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + 1) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + 1) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								} else {
@@ -2087,7 +2087,7 @@ namespace hqx
 									*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix5To3(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[7]);
 								}
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
@@ -2099,13 +2099,13 @@ namespace hqx
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
 									*(dp) = Interpolation.Mix5To3(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix7To1(middle, w[1]);
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + 1) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + 1) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
 									*(dp) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL) = Interpolation.Mix3To1(w[3], w[4]);
+									*(dp + dpL) = Interpolation.Mix3To1(w[3], middle);
 									*(dp + dpL + dpL) = Interpolation.Mix5To3(w[3], w[7]);
 									*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
@@ -2126,10 +2126,10 @@ namespace hqx
 						case 171:
 						case 43: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
-									*(dp + dpL + 1) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
+									*(dp + dpL + 1) = middle;
 									*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[7]);
 								} else {
@@ -2137,7 +2137,7 @@ namespace hqx
 									*(dp + 1) = Interpolation.Mix2To1To1(w[1], middle, w[3]);
 									*(dp + dpL) = Interpolation.Mix5To3(w[3], w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[1]);
-									*(dp + dpL + dpL) = Interpolation.Mix3To1(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.Mix3To1(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -2155,16 +2155,16 @@ namespace hqx
 						case 143:
 						case 15: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
 									*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 									*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
-									*(dp + dpL) = w[4];
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL) = middle;
+									*(dp + dpL + 1) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix5To3(w[1], w[3]);
-									*(dp + 2) = Interpolation.Mix3To1(w[1], w[4]);
+									*(dp + 2) = Interpolation.Mix3To1(w[1], middle);
 									*(dp + 3) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix2To1To1(w[3], middle, w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[1]);
@@ -2191,15 +2191,15 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[1]);
 								*(dp + dpL + 3) = Interpolation.Mix7To1(middle, w[1]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -2208,17 +2208,17 @@ namespace hqx
 							}
 						case 203: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
@@ -2235,17 +2235,17 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -2267,14 +2267,14 @@ namespace hqx
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -2285,17 +2285,17 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -2317,14 +2317,14 @@ namespace hqx
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -2341,15 +2341,15 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -2358,17 +2358,17 @@ namespace hqx
 							}
 						case 155: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
@@ -2549,18 +2549,18 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								break;
@@ -2575,18 +2575,18 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[7]);
@@ -2607,22 +2607,22 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
@@ -2640,21 +2640,21 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
 								*(dp + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
@@ -2663,13 +2663,13 @@ namespace hqx
 							}
 						case 59: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -2679,10 +2679,10 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -2703,22 +2703,22 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -2729,17 +2729,17 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + 1) = Interpolation.Mix7To1(middle, w[3]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
@@ -2748,7 +2748,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -2759,17 +2759,17 @@ namespace hqx
 							}
 						case 79: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
@@ -2779,7 +2779,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -2799,7 +2799,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -2809,26 +2809,26 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -2845,18 +2845,18 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 									*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
@@ -2864,7 +2864,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -2874,7 +2874,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -2891,7 +2891,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -2901,7 +2901,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
@@ -2911,31 +2911,31 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								break;
 							}
 						case 91: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -2945,10 +2945,10 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 									*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
@@ -2956,7 +2956,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -2966,7 +2966,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -3059,7 +3059,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -3069,7 +3069,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
@@ -3093,7 +3093,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix5To3(middle, w[3]);
@@ -3106,7 +3106,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -3131,7 +3131,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -3141,7 +3141,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -3158,7 +3158,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
@@ -3171,7 +3171,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -3198,7 +3198,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[6]);
 								} else {
 									*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix2To1To1(middle, w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(middle, w[7]);
 								}
@@ -3219,7 +3219,7 @@ namespace hqx
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL + 1) = middle;
 								}
 								*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
@@ -3247,7 +3247,7 @@ namespace hqx
 								} else {
 									*(dp + 2) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + 3) = Interpolation.Mix2To1To1(middle, w[1], w[5]);
-									*(dp + dpL + 2) = w[4];
+									*(dp + dpL + 2) = middle;
 									*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix5To3(middle, w[3]);
@@ -3280,7 +3280,7 @@ namespace hqx
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[8]);
 								} else {
-									*(dp + dpL + dpL + 2) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix2To1To1(middle, w[7], w[5]);
@@ -3331,27 +3331,27 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -3360,29 +3360,29 @@ namespace hqx
 							}
 						case 219: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -3393,13 +3393,13 @@ namespace hqx
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
 									*(dp) = Interpolation.Mix5To3(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix7To1(middle, w[1]);
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + 1) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + 1) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
 									*(dp) = Interpolation.Mix3To1(middle, w[3]);
-									*(dp + dpL) = Interpolation.Mix3To1(w[3], w[4]);
+									*(dp + dpL) = Interpolation.Mix3To1(w[3], middle);
 									*(dp + dpL + dpL) = Interpolation.Mix5To3(w[3], w[7]);
 									*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
@@ -3424,13 +3424,13 @@ namespace hqx
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
 									*(dp + 3) = Interpolation.Mix5To3(middle, w[1]);
 									*(dp + dpL + 3) = Interpolation.Mix7To1(middle, w[1]);
-									*(dp + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
 									*(dp + 3) = Interpolation.Mix3To1(middle, w[5]);
-									*(dp + dpL + 3) = Interpolation.Mix3To1(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.Mix3To1(w[5], middle);
 									*(dp + dpL + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[7]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix5To3(w[5], w[7]);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix2To1To1(w[7], middle, w[5]);
@@ -3447,16 +3447,16 @@ namespace hqx
 							}
 						case 207: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
 									*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 									*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
-									*(dp + dpL) = w[4];
-									*(dp + dpL + 1) = w[4];
+									*(dp + dpL) = middle;
+									*(dp + dpL + 1) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
 									*(dp + 1) = Interpolation.Mix5To3(w[1], w[3]);
-									*(dp + 2) = Interpolation.Mix3To1(w[1], w[4]);
+									*(dp + 2) = Interpolation.Mix3To1(w[1], middle);
 									*(dp + 3) = Interpolation.Mix3To1(middle, w[1]);
 									*(dp + dpL) = Interpolation.Mix2To1To1(w[3], middle, w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[1]);
@@ -3483,10 +3483,10 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + 1) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + 1) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								} else {
@@ -3494,7 +3494,7 @@ namespace hqx
 									*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix5To3(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[7]);
 								}
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
@@ -3505,10 +3505,10 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 2) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 2) = middle;
+									*(dp + dpL + 3) = middle;
 									*(dp + dpL + dpL + 3) = Interpolation.Mix7To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[7]);
 								} else {
@@ -3516,7 +3516,7 @@ namespace hqx
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
 									*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
 									*(dp + dpL + 3) = Interpolation.Mix5To3(w[5], w[1]);
-									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(w[5], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(w[5], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[5]);
 								}
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[0]);
@@ -3531,10 +3531,10 @@ namespace hqx
 							}
 						case 187: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
-									*(dp + dpL + 1) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
+									*(dp + dpL + 1) = middle;
 									*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[7]);
 								} else {
@@ -3542,7 +3542,7 @@ namespace hqx
 									*(dp + 1) = Interpolation.Mix2To1To1(w[1], middle, w[3]);
 									*(dp + dpL) = Interpolation.Mix5To3(w[3], w[1]);
 									*(dp + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[1]);
-									*(dp + dpL + dpL) = Interpolation.Mix3To1(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.Mix3To1(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix3To1(middle, w[3]);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
@@ -3569,17 +3569,17 @@ namespace hqx
 								*(dp + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + 3) = middle;
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
 									*(dp + dpL + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[7]);
 									*(dp + dpL + dpL + 3) = Interpolation.Mix2To1To1(w[5], middle, w[7]);
 									*(dp + dpL + dpL + dpL) = Interpolation.Mix3To1(middle, w[7]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix3To1(w[7], middle);
 									*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix5To3(w[7], w[5]);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
@@ -3589,13 +3589,13 @@ namespace hqx
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
 									*(dp) = Interpolation.Mix5To3(middle, w[3]);
 									*(dp + 1) = Interpolation.Mix7To1(middle, w[3]);
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 2) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 2) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
 									*(dp) = Interpolation.Mix3To1(middle, w[1]);
-									*(dp + 1) = Interpolation.Mix3To1(w[1], w[4]);
+									*(dp + 1) = Interpolation.Mix3To1(w[1], middle);
 									*(dp + 2) = Interpolation.Mix5To3(w[1], w[5]);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
 									*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
@@ -3623,12 +3623,12 @@ namespace hqx
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[1]);
 								*(dp + dpL + 2) = Interpolation.Mix6To1To1(middle, w[5], w[1]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[1]);
-								*(dp + dpL + dpL) = w[4];
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL) = middle;
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								break;
@@ -3636,15 +3636,15 @@ namespace hqx
 						case 175:
 						case 47: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 								} else {
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 								}
-								*(dp + 1) = w[4];
+								*(dp + 1) = middle;
 								*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL) = w[4];
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL) = middle;
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
@@ -3661,12 +3661,12 @@ namespace hqx
 						case 151: {
 								*(dp) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + 2) = w[4];
-								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 2) = middle;
+								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + 2) = w[4];
-								*(dp + dpL + 3) = w[4];
+								*(dp + dpL + 2) = middle;
+								*(dp + dpL + 3) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[7]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix6To1To1(middle, w[3], w[7]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[7]);
@@ -3689,12 +3689,12 @@ namespace hqx
 								*(dp + dpL + 3) = Interpolation.Mix7To1(middle, w[1]);
 								*(dp + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + 3) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + 3) = middle;
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[5]);
+								*(dp + dpL + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[5]);
 								break;
 							}
 						case 250: {
@@ -3707,52 +3707,52 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								break;
 							}
 						case 123: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -3761,25 +3761,25 @@ namespace hqx
 							}
 						case 95: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -3794,27 +3794,27 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -3831,19 +3831,19 @@ namespace hqx
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[1]);
 								*(dp + dpL + 3) = Interpolation.Mix7To1(middle, w[1]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + 3) = w[4];
-								*(dp + dpL + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[5]);
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + 3) = middle;
+								*(dp + dpL + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[5]);
 								break;
 							}
 						case 249: {
@@ -3855,70 +3855,70 @@ namespace hqx
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[1]);
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
-								*(dp + dpL + dpL) = w[4];
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL) = middle;
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
-								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + dpL + dpL + 1) = middle;
 								break;
 							}
 						case 235: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[2]);
-								*(dp + dpL + dpL) = w[4];
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL) = middle;
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								break;
 							}
 						case 111: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 								} else {
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 								}
-								*(dp + 1) = w[4];
+								*(dp + 1) = middle;
 								*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL) = w[4];
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL) = middle;
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To2To1(middle, w[5], w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -3927,23 +3927,23 @@ namespace hqx
 							}
 						case 63: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 								} else {
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 								}
-								*(dp + 1) = w[4];
+								*(dp + 1) = middle;
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
-								*(dp + dpL) = w[4];
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL) = middle;
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
@@ -3956,19 +3956,19 @@ namespace hqx
 							}
 						case 159: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
-								*(dp + 2) = w[4];
-								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
-								*(dp + dpL + 3) = w[4];
+								*(dp + 2) = middle;
+								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
+								*(dp + dpL + 3) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[7]);
@@ -3982,22 +3982,22 @@ namespace hqx
 						case 215: {
 								*(dp) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + 2) = w[4];
-								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 2) = middle;
+								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + 2) = w[4];
-								*(dp + dpL + 3) = w[4];
+								*(dp + dpL + 2) = middle;
+								*(dp + dpL + 3) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -4008,56 +4008,56 @@ namespace hqx
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix5To2To1(middle, w[3], w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + 3) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + 3) = middle;
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[5]);
+								*(dp + dpL + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[5]);
 								break;
 							}
 						case 254: {
 								*(dp) = Interpolation.Mix5To3(middle, w[0]);
 								*(dp + 1) = Interpolation.Mix3To1(middle, w[0]);
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
 								*(dp + dpL) = Interpolation.Mix3To1(middle, w[0]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[0]);
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL + 2) = middle;
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + 3) = w[4];
-								*(dp + dpL + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[5]);
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + 3) = middle;
+								*(dp + dpL + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[5]);
 								break;
 							}
 						case 253: {
@@ -4069,99 +4069,99 @@ namespace hqx
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[1]);
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[1]);
 								*(dp + dpL + 3) = Interpolation.Mix7To1(middle, w[1]);
-								*(dp + dpL + dpL) = w[4];
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + 3) = w[4];
-								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[5]);
+								*(dp + dpL + dpL) = middle;
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + 3) = middle;
+								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[5]);
 								break;
 							}
 						case 251: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
 								*(dp + 2) = Interpolation.Mix3To1(middle, w[2]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[2]);
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[2]);
 								*(dp + dpL + 3) = Interpolation.Mix3To1(middle, w[2]);
-								*(dp + dpL + dpL) = w[4];
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL) = middle;
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
-								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + dpL + dpL + 1) = middle;
 								break;
 							}
 						case 239: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 								} else {
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 								}
-								*(dp + 1) = w[4];
+								*(dp + 1) = middle;
 								*(dp + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL) = w[4];
-								*(dp + dpL + 1) = w[4];
+								*(dp + dpL) = middle;
+								*(dp + dpL + 1) = middle;
 								*(dp + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL + dpL) = w[4];
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL) = middle;
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
-								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[5]);
 								*(dp + dpL + dpL + dpL + 3) = Interpolation.Mix5To3(middle, w[5]);
 								break;
 							}
 						case 127: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 								} else {
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 								}
-								*(dp + 1) = w[4];
+								*(dp + 1) = middle;
 								if (Diff(w[1], w[5], trY, trU, trV, trA)) {
-									*(dp + 2) = w[4];
-									*(dp + 3) = w[4];
-									*(dp + dpL + 3) = w[4];
+									*(dp + 2) = middle;
+									*(dp + 3) = middle;
+									*(dp + dpL + 3) = middle;
 								} else {
-									*(dp + 2) = Interpolation.MixEven(w[1], w[4]);
+									*(dp + 2) = Interpolation.MixEven(w[1], middle);
 									*(dp + 3) = Interpolation.MixEven(w[1], w[5]);
-									*(dp + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
+									*(dp + dpL + 3) = Interpolation.MixEven(w[5], middle);
 								}
-								*(dp + dpL) = w[4];
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
+								*(dp + dpL) = middle;
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
 								if (Diff(w[7], w[3], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL) = w[4];
-									*(dp + dpL + dpL + dpL + 1) = w[4];
+									*(dp + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL) = middle;
+									*(dp + dpL + dpL + dpL + 1) = middle;
 								} else {
-									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + dpL + dpL) = Interpolation.MixEven(w[3], middle);
 									*(dp + dpL + dpL + dpL) = Interpolation.MixEven(w[7], w[3]);
-									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + dpL + 1) = Interpolation.MixEven(w[7], middle);
 								}
-								*(dp + dpL + dpL + 1) = w[4];
+								*(dp + dpL + dpL + 1) = middle;
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[8]);
 								*(dp + dpL + dpL + 3) = Interpolation.Mix3To1(middle, w[8]);
 								*(dp + dpL + dpL + dpL + 2) = Interpolation.Mix3To1(middle, w[8]);
@@ -4170,17 +4170,17 @@ namespace hqx
 							}
 						case 191: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 								} else {
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 								}
-								*(dp + 1) = w[4];
-								*(dp + 2) = w[4];
-								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = w[4];
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
-								*(dp + dpL + 3) = w[4];
+								*(dp + 1) = middle;
+								*(dp + 2) = middle;
+								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + dpL) = middle;
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
+								*(dp + dpL + 3) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[7]);
 								*(dp + dpL + dpL + 2) = Interpolation.Mix7To1(middle, w[7]);
@@ -4193,29 +4193,29 @@ namespace hqx
 							}
 						case 223: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
-									*(dp + 1) = w[4];
-									*(dp + dpL) = w[4];
+									*dp = middle;
+									*(dp + 1) = middle;
+									*(dp + dpL) = middle;
 								} else {
 									*(dp) = Interpolation.MixEven(w[1], w[3]);
-									*(dp + 1) = Interpolation.MixEven(w[1], w[4]);
-									*(dp + dpL) = Interpolation.MixEven(w[3], w[4]);
+									*(dp + 1) = Interpolation.MixEven(w[1], middle);
+									*(dp + dpL) = Interpolation.MixEven(w[3], middle);
 								}
-								*(dp + 2) = w[4];
-								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
-								*(dp + dpL + 3) = w[4];
+								*(dp + 2) = middle;
+								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
+								*(dp + dpL + 3) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix3To1(middle, w[6]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[6]);
-								*(dp + dpL + dpL + 2) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
 								if (Diff(w[5], w[7], trY, trU, trV, trA)) {
-									*(dp + dpL + dpL + 3) = w[4];
-									*(dp + dpL + dpL + dpL + 2) = w[4];
-									*(dp + dpL + dpL + dpL + 3) = w[4];
+									*(dp + dpL + dpL + 3) = middle;
+									*(dp + dpL + dpL + dpL + 2) = middle;
+									*(dp + dpL + dpL + dpL + 3) = middle;
 								} else {
-									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], w[4]);
-									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], w[4]);
+									*(dp + dpL + dpL + 3) = Interpolation.MixEven(w[5], middle);
+									*(dp + dpL + dpL + dpL + 2) = Interpolation.MixEven(w[7], middle);
 									*(dp + dpL + dpL + dpL + 3) = Interpolation.MixEven(w[7], w[5]);
 								}
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[6]);
@@ -4225,43 +4225,43 @@ namespace hqx
 						case 247: {
 								*(dp) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + 2) = w[4];
-								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + 2) = middle;
+								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
 								*(dp + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + 2) = w[4];
-								*(dp + dpL + 3) = w[4];
+								*(dp + dpL + 2) = middle;
+								*(dp + dpL + 3) = middle;
 								*(dp + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + 3) = w[4];
+								*(dp + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + 3) = middle;
 								*(dp + dpL + dpL + dpL) = Interpolation.Mix5To3(middle, w[3]);
 								*(dp + dpL + dpL + dpL + 1) = Interpolation.Mix7To1(middle, w[3]);
-								*(dp + dpL + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[5]);
+								*(dp + dpL + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[5]);
 								break;
 							}
 						case 255: {
 								if (Diff(w[3], w[1], trY, trU, trV, trA)) {
-									*dp = w[4];
+									*dp = middle;
 								} else {
 									*(dp) = Interpolation.Mix2To1To1(middle, w[1], w[3]);
 								}
-								*(dp + 1) = w[4];
-								*(dp + 2) = w[4];
-								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[1], w[5]);
-								*(dp + dpL) = w[4];
-								*(dp + dpL + 1) = w[4];
-								*(dp + dpL + 2) = w[4];
-								*(dp + dpL + 3) = w[4];
-								*(dp + dpL + dpL) = w[4];
-								*(dp + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + 3) = w[4];
-								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[3]);
-								*(dp + dpL + dpL + dpL + 1) = w[4];
-								*(dp + dpL + dpL + dpL + 2) = w[4];
-								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? w[4] : Interpolation.Mix2To1To1(middle, w[7], w[5]);
+								*(dp + 1) = middle;
+								*(dp + 2) = middle;
+								*(dp + 3) = Diff(w[1], w[5], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[1], w[5]);
+								*(dp + dpL) = middle;
+								*(dp + dpL + 1) = middle;
+								*(dp + dpL + 2) = middle;
+								*(dp + dpL + 3) = middle;
+								*(dp + dpL + dpL) = middle;
+								*(dp + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + 3) = middle;
+								*(dp + dpL + dpL + dpL) = Diff(w[7], w[3], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[3]);
+								*(dp + dpL + dpL + dpL + 1) = middle;
+								*(dp + dpL + dpL + dpL + 2) = middle;
+								*(dp + dpL + dpL + dpL + 3) = Diff(w[5], w[7], trY, trU, trV, trA) ? middle : Interpolation.Mix2To1To1(middle, w[7], w[5]);
 								break;
 							}
 					}
