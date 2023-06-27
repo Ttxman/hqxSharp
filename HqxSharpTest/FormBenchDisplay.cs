@@ -1,6 +1,6 @@
 ﻿/*
  * 
- * Copyright © 2020 René Rhéaume (rene.rheaume@gmail.com)
+ * Copyright © 2020 René Rhéaume (repzilon@users.noreply.github.com)
  * 
  * This file is part of hqxSharp.
  *

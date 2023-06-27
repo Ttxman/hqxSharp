@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright © 2013 René Rhéaume (rene.rheaume@gmail.com)
+ * Copyright © 2013 René Rhéaume (repzilon@users.noreply.github.com)
  *
  * This file is part of hqxSharp.
  *
