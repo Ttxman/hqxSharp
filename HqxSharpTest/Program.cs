@@ -18,7 +18,7 @@
  * along with hqxSharp. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define Graphical
+//#define Graphical
 using System;
 using System.IO;
 #if Graphical
