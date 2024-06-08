@@ -1,6 +1,6 @@
 ﻿/*
  * 
- * Copyright © 2020 René Rhéaume (repzilon@users.noreply.github.com)
+ * Copyright © 2024 René Rhéaume (repzilon@users.noreply.github.com)
  * 
  * This file is part of hqxSharp.
  *
@@ -23,33 +23,22 @@ using System.Drawing;
 
 namespace HqxSharpTest
 {
-	internal class ConsoleBenchDisplay : TestBenchDisplay
+	internal sealed class PngWritingBenchDisplay : ConsoleBenchDisplay
 	{
-		public override void Info(string message)
-		{
-			Console.WriteLine(message);
-		}
-
-		public override void Error(string message)
-		{
-			Console.Error.WriteLine(message);
-		}
-
-		public override void Progress(string message)
-		{
-			Console.WriteLine(message);
-		}
+		private int i;
 
 		public override void Draw(Bitmap scaled)
 		{
-			// Do nothing. You could also write the image on disk here.
-		}
-
-		public override void OnEnd(DateTime globalStart)
-		{
-			Console.WriteLine(FormatEndMessage(globalStart));
-			Console.WriteLine("Press Enter to exit...");
-			Console.ReadLine();
+			base.Draw(scaled);
+			i++;
+			var strFilename = String.Format("hq3x-{0:D5}.png", i);
+			var strDirName = System.IO.Path.Combine(Program.ImageDirectory, "hq3x");
+			var strPath = System.IO.Path.Combine(strDirName, strFilename);
+			if (!System.IO.Directory.Exists(strDirName))
+			{
+				System.IO.Directory.CreateDirectory(strDirName);
+			}
+			scaled.Save(strPath, System.Drawing.Imaging.ImageFormat.Png);
 		}
 	}
 }

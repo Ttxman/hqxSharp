@@ -37,11 +37,9 @@ namespace HqxSharpTest
 #endif
 		private static void Main(string[] args)
 		{
-			var strImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
+			Program.ImageDirectory = (args.Length > 0) ? Path.GetFullPath(args[0]) : Environment.CurrentDirectory;
 
 #if Graphical
-			Program.ImageDirectory = strImageDirectory;
-
 			// Standard Windows Forms application initialization. Test bench will be run in the Shown event of the form.
 			Application.SetCompatibleTextRenderingDefault(false);
 			using (var form1 = new Form1()) {
@@ -49,7 +47,7 @@ namespace HqxSharpTest
 			}
 			Application.DoEvents();
 #else
-			new TestBench(strImageDirectory, new ConsoleBenchDisplay()).Run();
+			new TestBench(Program.ImageDirectory, new ConsoleBenchDisplay()).Run();
 #endif
 		}
 	}
