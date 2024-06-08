@@ -5,3 +5,4 @@ obj/
 PNG/
 *.user
 .DS_Store
+/*.suo
