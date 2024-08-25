@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35201.85
@@ -9,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqxSharpTest", "HqxSharpTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqxTerser", "HqxTerser\HqxTerser.csproj", "{80B77F90-E194-4C57-BCA4-1E85B3F734F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HqxTerser", "HqxTerser\HqxTerser.csproj", "{80B77F90-E194-4C57-BCA4-1E85B3F734F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hqxSharp.Bitmaps", "hqxSharpBitmap\hqxSharp.Bitmaps.csproj", "{5522FBC3-0C28-482D-9A1F-20E22BFD271C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

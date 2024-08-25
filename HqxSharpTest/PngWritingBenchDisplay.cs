@@ -1,4 +1,4 @@
-﻿/*
+/*
  * 
  * Copyright © 2024 René Rhéaume (repzilon@users.noreply.github.com)
  * 
@@ -20,10 +20,12 @@
 
 using System;
 using System.Drawing;
+using System.Runtime.Versioning;
 
 namespace HqxSharpTest
 {
-	internal sealed class PngWritingBenchDisplay : ConsoleBenchDisplay
+    [SupportedOSPlatform("windows")]
+    internal sealed class PngWritingBenchDisplay : ConsoleBenchDisplay
 	{
 		private int i;
 

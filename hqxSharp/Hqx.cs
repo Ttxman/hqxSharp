@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright © 2003 Maxim Stepin (maxst@hiend3d.com)
  * 
  * Copyright © 2010 Cameron Zemek (grom@zeminvaders.net)
@@ -24,6 +24,7 @@
  */
 
 using System;
+using System.Collections.Immutable;
 using System.Drawing;
 using System.Drawing.Imaging;
 
@@ -45,7 +46,7 @@ namespace hqx
 	/// <param name="trA">The A (transparency) threshold.</param>
 	/// <param name="wrapX">Used for images that can be seamlessly repeated horizontally.</param>
 	/// <param name="wrapY">Used for images that can be seamlessly repeated vertically.</param>
-	internal unsafe delegate void Magnify(uint* sp, uint* dp, int Xres, int Yres, uint trY, uint trU, uint trV, uint trA, bool wrapX, bool wrapY);
+	public unsafe delegate void Magnify(uint* sp, uint* dp, int Xres, int Yres, uint trY, uint trU, uint trV, uint trA, bool wrapX, bool wrapY);
 
 	/// <summary>
 	/// Provides access to hqxSharp, the extended port of the hqx pixel art magnification filter.
@@ -55,7 +56,7 @@ namespace hqx
 	/// <para>This means that additional functionality (like alpha support and variable AYUV thresholds) and easier code are usually preferred over a small performance increase.</para>
 	/// <para>Calls to hqx methods are compatible with the corresponding hqxSharp methods and the default thresholds are those used in hqx.</para>
 	/// </remarks>
-	public static partial class HqxSharp
+	public static unsafe partial class HqxSharp
 	{
 		/// <summary>
 		/// Compares two ARGB colors according to the provided Y, U, V and A thresholds.
@@ -102,61 +103,7 @@ namespace hqx
 			return (v + mask) ^ mask;
 		}
 
-		private static readonly unsafe Magnify[] scalers = { Scale2, Scale3, Scale4 };
-
-		public static Bitmap Scale(Bitmap bitmap, byte factor, HqxSharpParameters parameters)
-		{
-			if ((factor >= 2) && (factor <= 4)) {
-				return ScaleCore(bitmap, factor, parameters);
-			} else {
-				throw new ArgumentOutOfRangeException("factor", factor, "Hqx provides a scale factor of 2x, 3x, or 4x");
-			}
-		}
-
-		private static Bitmap ScaleCore(Bitmap bitmap, byte factor, HqxSharpParameters parameters)
-		{
-			return Scale(bitmap, factor, scalers[factor - 2], parameters);
-		}
-
-		private static unsafe Bitmap Scale(Bitmap bitmap, byte factor, Magnify magnify, HqxSharpParameters parameters)
-		{
-			if (bitmap == null) {
-				throw new ArgumentNullException("bitmap");
-			}
-			if (magnify == null) {
-				throw new ArgumentNullException("magnify");
-			}
-			Bitmap dest = null;
-			BitmapData bmpData = null, destData = null;
-			var Xres = bitmap.Width;
-			var Yres = bitmap.Height;
-			try {
-				dest = new Bitmap(checked((short)(Xres * factor)), checked((short)(Yres * factor)));
-				bmpData = LockBits(bitmap, ImageLockMode.ReadOnly);
-				destData = LockBits(dest, ImageLockMode.WriteOnly);
-				magnify(StartPointer(bmpData), StartPointer(destData), Xres, Yres,
-				 parameters.LumaThreshold, parameters.BlueishThreshold, parameters.ReddishThreshold, parameters.AlphaThreshold,
-				 parameters.WrapX, parameters.WrapY);
-			} finally {
-				if (bmpData != null) {
-					bitmap.UnlockBits(bmpData);
-				}
-				if ((destData != null) && (dest != null)) {
-					dest.UnlockBits(destData);
-				}
-			}
-			return dest;
-		}
-
-		private static unsafe uint* StartPointer(BitmapData bmpData)
-		{
-			return (uint*)bmpData.Scan0.ToPointer();
-		}
-
-		private static BitmapData LockBits(Bitmap source, ImageLockMode lockMode)
-		{
-			return source.LockBits(new Rectangle(Point.Empty, source.Size), lockMode, PixelFormat.Format32bppArgb);
-		}
+		public static readonly ImmutableArray<Magnify> scalers = [ Scale2, Scale3, Scale4 ];
 
 		private static int FindPattern(int[] wy, uint[] w, uint trY, uint trU, uint trV, uint trA)
 		{

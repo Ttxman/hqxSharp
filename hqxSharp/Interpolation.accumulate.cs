@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright © 2003 Maxim Stepin (maxst@hiend3d.com)
  *
  * Copyright © 2010 Cameron Zemek (grom@zeminvaders.net)
@@ -23,6 +23,8 @@
  * along with hqxSharp. If not, see <http://www.gnu.org/licenses/>.
  */
 
+using System.Runtime.CompilerServices;
+
 namespace hqx
 {
 	/// <summary>
@@ -31,30 +33,34 @@ namespace hqx
 	internal static class Interpolation
 	{
 		// 1572 calls :  288 in 2x, 756 in 3x,  528 in 4x
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static uint Mix3To1(uint c1, uint c2)
 		{
 			return MixColours(3, 1, c1, c2);
 		}
 
-		//  676 calls :  316 in 2x, 180 in 3x,  180 in 4x
-		public static uint Mix2To1To1(uint c1, uint c2, uint c3)
+        //  676 calls :  316 in 2x, 180 in 3x,  180 in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix2To1To1(uint c1, uint c2, uint c3)
 		{
 			return MixColours(2, 1, 1, c1, c2, c3);
 		}
 
-		//  760 calls : NONE in 2x, 120 in 3x,  640 in 4x
-		public static uint Mix7To1(uint c1, uint c2)
+        //  760 calls : NONE in 2x, 120 in 3x,  640 in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix7To1(uint c1, uint c2)
 		{
 			return MixColours(7, 1, c1, c2);
 		}
 
-		//   72 calls : NONE in 2x,  72 in 3x, NONE in 4x
-		public static uint Mix2To7To7(uint c1, uint c2, uint c3)
+        //   72 calls : NONE in 2x,  72 in 3x, NONE in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix2To7To7(uint c1, uint c2, uint c3)
 		{
 			return MixColours(2, 7, 7, c1, c2, c3);
 		}
 
-		/*
+        /*
 		From 2xSaI source
 		In 15bpp,
 			colorMask		is 0x7BDE or binary 0111 1011 1101 1110, i.e. 3 sequences of 11110
@@ -71,46 +77,53 @@ namespace hqx
 		}
 		*/
 
-		//  264 calls : NONE in 2x,  24 in 3x,  240 in 4x
-		public static uint MixEven(uint c1, uint c2)
+        //  264 calls : NONE in 2x,  24 in 3x,  240 in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint MixEven(uint c1, uint c2)
 		{
 			return MixColours(1, 1, c1, c2);
 		}
 
-		//  344 calls :   24 in 2x, NONE in 3x, 320 in 4x
-		public static uint Mix5To2To1(uint c1, uint c2, uint c3)
+        //  344 calls :   24 in 2x, NONE in 3x, 320 in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix5To2To1(uint c1, uint c2, uint c3)
 		{
 			return MixColours(5, 2, 1, c1, c2, c3);
 		}
 
-		//  152 calls :   52 in 2x, NONE in 3x, 100 in 4x
-		public static uint Mix6To1To1(uint c1, uint c2, uint c3)
+        //  152 calls :   52 in 2x, NONE in 3x, 100 in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix6To1To1(uint c1, uint c2, uint c3)
 		{
 			return MixColours(6, 1, 1, c1, c2, c3);
 		}
 
-		//  664 calls : NONE in 2x, NONE in 3x, 664 in 4x
-		public static uint Mix5To3(uint c1, uint c2)
+        //  664 calls : NONE in 2x, NONE in 3x, 664 in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix5To3(uint c1, uint c2)
 		{
 			return MixColours(5, 3, c1, c2);
 		}
 
-		//   24 calls :   24 in 2x, NONE in 3x, NONE in 4x
-		public static uint Mix2To3To3(uint c1, uint c2, uint c3)
+        //   24 calls :   24 in 2x, NONE in 3x, NONE in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix2To3To3(uint c1, uint c2, uint c3)
 		{
 			return MixColours(2, 3, 3, c1, c2, c3);
 		}
 
-		//   28 calls :   28 in 2x, NONE in 3x, NONE in 4x
-		public static uint Mix14To1To1(uint c1, uint c2, uint c3)
+        //   28 calls :   28 in 2x, NONE in 3x, NONE in 4x
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint Mix14To1To1(uint c1, uint c2, uint c3)
 		{
 			return MixColours(14, 1, 1, c1, c2, c3);
 		}
 
-		// This method can overflow between blue and red and from red to nothing when the sum of all weightings is higher than 255.
-		// It only works for weightings with a sum that is a power of two, otherwise the blue value is corrupted.
-		// Parameters: weighting0, weighting1[, ...], colour0, colour1[, ...]
-		private static uint MixColours(uint w1, uint w2, uint c1, uint c2)
+        // This method can overflow between blue and red and from red to nothing when the sum of all weightings is higher than 255.
+        // It only works for weightings with a sum that is a power of two, otherwise the blue value is corrupted.
+        // Parameters: weighting0, weighting1[, ...], colour0, colour1[, ...]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static uint MixColours(uint w1, uint w2, uint c1, uint c2)
 		{
 			if (c2 == c1) {
 				return c1;
@@ -126,7 +139,8 @@ namespace hqx
 			}
 		}
 
-		private static uint MixColours(uint w1, uint w2, uint w3, uint c1, uint c2, uint c3)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static uint MixColours(uint w1, uint w2, uint w3, uint c1, uint c2, uint c3)
 		{
 			if ((c2 == c1) && (c3 == c1)) {
 				return c1;
@@ -143,7 +157,8 @@ namespace hqx
 			}
 		}
 
-		private static void Accumulate(uint weighting, uint colour, ref uint totalPartsColour, ref uint totalGreen, ref uint totalRedBlue, ref uint totalAlpha)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static void Accumulate(uint weighting, uint colour, ref uint totalPartsColour, ref uint totalGreen, ref uint totalRedBlue, ref uint totalAlpha)
 		{
 			const uint MaskGreen = 0x0000ff00;
 			const uint MaskRedBlue = 0x00ff00ff;
@@ -159,7 +174,8 @@ namespace hqx
 			}
 		}
 
-		private static uint Reduce(uint totalPartsColour, uint totalPartsAlpha, uint totalGreen, uint totalRedBlue, uint totalAlpha)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static uint Reduce(uint totalPartsColour, uint totalPartsAlpha, uint totalGreen, uint totalRedBlue, uint totalAlpha)
 		{
 			const uint MaskGreen = 0x0000ff00;
 			const uint MaskRedBlue = 0x00ff00ff;

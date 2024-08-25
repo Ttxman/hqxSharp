@@ -11,17 +11,15 @@
     <Copyright>Copyright (C) 2003 Maxim Stepin (maxst@hiend3d.com), Copyright (C) 2010 Cameron Zemek (grom@zeminvaders.net), Copyright (C) 2011 Tamme Schichler (tamme.schichler@googlemail.com). Copyright (C) 2013, 2020-2021 René Rhéaume. This program is licensed under the GNU Lesser General Public License version 3 or any later version.</Copyright>
     <AssemblyVersion>0.2.0.0</AssemblyVersion>
     <FileVersion>0.2.0.0</FileVersion>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>3</LangVersion>
     <WarningsAsErrors>3001,3003</WarningsAsErrors>
-    <DocumentationFile>hqxSharp.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\hqxSharp - Authors.txt">

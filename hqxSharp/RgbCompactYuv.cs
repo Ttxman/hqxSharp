@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright © 2013 René Rhéaume (repzilon@users.noreply.github.com)
  *
  * This file is part of hqxSharp.
@@ -36,7 +36,6 @@ namespace hqx
 		private static readonly IDictionary<uint, int> s_dicRgbYuv =
 		 new Dictionary<uint, int>();
 
-		[CLSCompliant(false)]
 		public static int GetYuv(uint rgb)
 		{
 			const uint RgbMask = 0x00ffffff;

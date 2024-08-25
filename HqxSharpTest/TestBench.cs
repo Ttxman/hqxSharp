@@ -1,4 +1,4 @@
-﻿/*
+/*
  * 
  * Copyright © 2020 René Rhéaume (repzilon@users.noreply.github.com)
  * 
@@ -22,7 +22,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.Versioning;
 using hqx;
+using hqxSharp.Bitmaps;
 
 // Disable warnings for features introduced in later versions of C#
 #pragma warning disable CC0048 // Use string interpolation instead of String.Format
@@ -30,7 +32,8 @@ using hqx;
 
 namespace HqxSharpTest
 {
-	internal sealed class TestBench
+    [SupportedOSPlatform("windows")]
+    internal sealed class TestBench
 	{
 		private string m_strImageDir;
 		private TestBenchDisplay m_objDisplay;
@@ -101,7 +104,7 @@ namespace HqxSharpTest
 						bmpSource = new Bitmap(strImage);
 						tsGlobalLoad += DateTime.UtcNow - dtmImageStart;
 						var dtmScaleStart = DateTime.UtcNow;
-						bmpScaled = HqxSharp.Scale(bmpSource, 3, HqxSharpParameters.Default);
+						bmpScaled = HqxSharpBitmap.Scale(bmpSource, 3, HqxSharpParameters.Default);
 						tsGlobalScale += DateTime.UtcNow - dtmScaleStart;
 						lngGlobalPixels += bmpScaled.Width * bmpScaled.Height;
 

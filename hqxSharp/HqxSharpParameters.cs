@@ -1,4 +1,4 @@
-﻿/*
+/*
  * 
  * Copyright © 2020 René Rhéaume (repzilon@users.noreply.github.com)
  * 
@@ -33,7 +33,7 @@ namespace hqx
 
 		public static readonly HqxSharpParameters Default = Create();
 
-		[FieldOffset(0)][CLSCompliant(false)]
+		[FieldOffset(0)]
 		public readonly uint AllThresholds;
 
 		/// <summary>The Y (luminance) threshold.</summary>
@@ -65,7 +65,6 @@ namespace hqx
 			return new HqxSharpParameters(0x00300706, false, false);
 		}
 
-		[CLSCompliant(false)]
 		public HqxSharpParameters(uint thresholds, bool wrapX, bool wrapY)
 		{
 			LumaThreshold = 0;

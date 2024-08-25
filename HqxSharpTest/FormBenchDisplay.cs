@@ -1,4 +1,4 @@
-﻿/*
+/*
  * 
  * Copyright © 2020 René Rhéaume (repzilon@users.noreply.github.com)
  * 
@@ -21,6 +21,7 @@
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
 
 // Disable warnings for features introduced in later versions of C#
@@ -28,7 +29,8 @@ using System.Windows.Forms;
 
 namespace HqxSharpTest
 {
-	internal sealed class FormBenchDisplay : TestBenchDisplay, IDisposable
+    [SupportedOSPlatform("windows")]
+    internal sealed class FormBenchDisplay : TestBenchDisplay, IDisposable
 	{
 		private readonly Form m_frmWindow;
 		private Graphics m_gfxForm;

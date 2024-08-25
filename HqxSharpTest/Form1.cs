@@ -1,4 +1,4 @@
-﻿/*
+/*
  * 
  * Copyright © 2020 René Rhéaume (repzilon@users.noreply.github.com)
  * 
@@ -19,11 +19,13 @@
  */
 
 using System;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
 
 namespace HqxSharpTest
 {
-	public partial class Form1 : Form
+    [SupportedOSPlatform("windows")]
+    public partial class Form1 : Form
 	{
 		public Form1()
 		{

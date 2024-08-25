@@ -30,23 +30,19 @@ namespace hqx
 	public static partial class HqxSharp
 	{
 		/// <summary>
-		/// This is the extended C# port of the hq3x algorithm.
-		/// <para>The image is scaled to three times its size.</para>
+		/// 
 		/// </summary>
-		/// <param name="bitmap">The source image.</param>
-		/// <param name="parameters">Thresholds and wrapping options for scaling.</param>
-		/// <returns>A new Bitmap instance that contains the source image scaled to three times its size.</returns>
-		public static unsafe Bitmap Scale3(Bitmap bitmap, HqxSharpParameters parameters)
-		{
-			return Scale(bitmap, 3, Scale3, parameters);
-		}
-
-		public static unsafe Bitmap Scale3(Bitmap bitmap)
-		{
-			return Scale(bitmap, 3, Scale3, HqxSharpParameters.Default);
-		}
-
-		private static unsafe void Scale3(uint* sp, uint* dp, int Xres, int Yres, uint trY, uint trU, uint trV, uint trA, bool wrapX, bool wrapY)
+		/// <param name="sp"></param>
+		/// <param name="dp"></param>
+		/// <param name="Xres"></param>
+		/// <param name="Yres"></param>
+		/// <param name="trY"></param>
+		/// <param name="trU"></param>
+		/// <param name="trV"></param>
+		/// <param name="trA"></param>
+		/// <param name="wrapX"></param>
+		/// <param name="wrapY"></param>
+		public static unsafe void Scale3(uint* sp, uint* dp, int Xres, int Yres, uint trY, uint trU, uint trV, uint trA, bool wrapX, bool wrapY)
 		{
 			var w = new uint[9];
 			uint middle;

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * 
  * Copyright © 2020 René Rhéaume (repzilon@users.noreply.github.com)
  * 
@@ -21,14 +21,16 @@
 //#define Graphical
 using System;
 using System.IO;
+using System.Runtime.Versioning;
 #if Graphical
 using System.Windows.Forms;
 #endif
 
 namespace HqxSharpTest
 {
-	// TODO : Make a compare bench with unoptimized algorithm to ensure output is the same
-	internal static class Program
+    // TODO : Make a compare bench with unoptimized algorithm to ensure output is the same
+    [SupportedOSPlatform("windows")]
+    internal static class Program
 	{
 		internal static string ImageDirectory { get; private set; }
 
