@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1585
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35201.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hqxSharp", "hqxSharp\hqxSharp.csproj", "{C87AF99C-6CF6-4F89-8E9F-4B071BF53753}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hqxSharp", "hqxSharp\hqxSharp.csproj", "{C87AF99C-6CF6-4F89-8E9F-4B071BF53753}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HqxSharpTest", "HqxSharpTest\HqxSharpTest.csproj", "{EDAA07F5-B120-47E9-8CDA-7B46CC80B7ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqxSharpTest", "HqxSharpTest\HqxSharpTest.csproj", "{EDAA07F5-B120-47E9-8CDA-7B46CC80B7ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqxTerser", "HqxTerser\HqxTerser.csproj", "{80B77F90-E194-4C57-BCA4-1E85B3F734F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HqxTerser", "HqxTerser\HqxTerser.csproj", "{80B77F90-E194-4C57-BCA4-1E85B3F734F7}"
 EndProject
@@ -27,6 +29,10 @@ Global
 		{80B77F90-E194-4C57-BCA4-1E85B3F734F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80B77F90-E194-4C57-BCA4-1E85B3F734F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80B77F90-E194-4C57-BCA4-1E85B3F734F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5522FBC3-0C28-482D-9A1F-20E22BFD271C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5522FBC3-0C28-482D-9A1F-20E22BFD271C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5522FBC3-0C28-482D-9A1F-20E22BFD271C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5522FBC3-0C28-482D-9A1F-20E22BFD271C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
